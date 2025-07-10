@@ -225,7 +225,7 @@
             transform: scale(1.1);
         }
     </style> -->
-        <style>
+<style>
   :root {
     --primary-color: #2d3436;
     --secondary-color: #0984e3;
@@ -394,11 +394,29 @@
 
   .nav-link {
     color: var(--text-color) !important;
+    position: relative;
+    text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .nav-link:hover {
     color: var(--accent-color) !important;
+  }
+
+  /* Underline on hover */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
   }
 
   .circle-icon img {
@@ -413,64 +431,62 @@
   }
 
   /* Resume Section */
-/* Resume Section Styling */
-#resume {
-  padding: 80px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
-  margin: 80px auto;
-  max-width: 900px;
-}
+  #resume {
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    margin: 80px auto;
+    max-width: 900px;
+  }
 
-.resume-title {
-  font-size: 2.7rem;
-  font-weight: 700;
-}
+  .resume-title {
+    font-size: 2.7rem;
+    font-weight: 700;
+  }
 
-.underline {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(to right, #0984e3, #6c5ce7);
-  margin: 10px auto 30px;
-  border-radius: 2px;
-}
+  .underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #0984e3, #6c5ce7);
+    margin: 10px auto 30px;
+    border-radius: 2px;
+  }
 
-.btn-resume-gradient {
-  background: linear-gradient(to right, #0984e3, #6c5ce7);
-  color: white;
-  padding: 12px 30px;
-  font-weight: bold;
-  border: none;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
+  .btn-resume-gradient {
+    background: linear-gradient(to right, #0984e3, #6c5ce7);
+    color: white;
+    padding: 12px 30px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
 
-.btn-resume-gradient:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(to right, #6c5ce7, #0984e3);
-}
+  .btn-resume-gradient:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #6c5ce7, #0984e3);
+  }
 
-.btn-outline-resume {
-  padding: 12px 30px;
-  border-radius: 25px;
-  color: var(--accent-color);
-  font-weight: bold;
-  border: 2px solid var(--accent-color);
-  background: transparent;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+  .btn-outline-resume {
+    padding: 12px 30px;
+    border-radius: 25px;
+    color: var(--accent-color);
+    font-weight: bold;
+    border: 2px solid var(--accent-color);
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
 
-.btn-outline-resume:hover {
-  background-color: var(--accent-color);
-  color: white;
-  transform: translateY(-3px);
-}
-
+  .btn-outline-resume:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+  }
 
   /* Project Section (Updated Style) */
   #projects {
@@ -736,9 +752,8 @@
                         <p>Modern, responsive portfolio showcasing creative
                             design and smooth animations.</p>
                         <div class="tech-stack">
-                            <span class="badge">React.js</span>
-                            <span class="badge">Framer Motion</span>
-                            <span class="badge">Tailwind CSS</span>
+                            <span class="badge">HTML & CSS</span>
+                            <span class="badge">JavaScript</span>
                         </div>
                     </div>
                 </div>
