@@ -225,7 +225,7 @@
             transform: scale(1.1);
         }
     </style> -->
-<style>
+        <style>
   :root {
     --primary-color: #2d3436;
     --secondary-color: #0984e3;
@@ -542,6 +542,56 @@
     background-color: var(--accent-color);
     color: #ffffff;
   }
+
+
+  #contact-form {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  padding: 50px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+#contact-form h2 {
+  color: var(--text-color);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#contact-form .form-label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+#contact-form .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-color);
+  border-radius: 10px;
+  padding: 10px 15px;
+  transition: border-color 0.3s ease;
+}
+
+#contact-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#contact-form .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 206, 201, 0.25);
+}
+
+#contact-form button[type="submit"] {
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+#contact-form button[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
 </style>
 
     </head>
@@ -583,7 +633,9 @@
 
         <div class="hero">
             <h1>𝓗𝓲, 𝓘'𝓶 𝓨𝓪𝓼𝓱 𝓚𝓪𝓷𝓭𝓮𝓴𝓪𝓻 </h1>
-            <p>​🇦​ ​🇵​​🇦​​🇸​​🇸​​🇮​​🇴​​🇳​​🇦​​🇹​​🇪​ ​🇧​​🇦​​🇨​​🇰​​🇪​​🇳​​🇩​ 🇩​​🇪​​🇻​​🇪​​🇱​​🇴​​🇵​​🇪​​🇷​ </p>
+            <p>​🇦​ ​🇵​​🇦​​🇸​​🇸​​🇮​​🇴​​🇳​​🇦​​🇹​​🇪​
+                ​🇧​​🇦​​🇨​​🇰​​🇪​​🇳​​🇩​ 🇩​​🇪​​🇻​​🇪​​🇱​​🇴​​🇵​​🇪​​🇷​
+            </p>
             <a href="#contact" class="btn btn-outline-danger btn-lg">Contact
                 Me</a>
         </div>
@@ -602,7 +654,8 @@
                 </p>
                 <div class="d-flex justify-content-center flex-wrap gap-3">
                     <a href="yashkandekarResume.pdf" download
-                        class="btn btn-resume-gradient" target="_blank">Download PDF Resume</a>
+                        class="btn btn-resume-gradient" target="_blank">Download
+                        PDF Resume</a>
                     <!-- <a href="file:///C:/Users/DELL/Downloads/yashkandekarResume.pdf" target="_blank"
                         class="btn btn-outline-resume">View Online Resume</a> -->
                 </div>
@@ -612,7 +665,7 @@
         <div id="about" class="container my-5">
             <h2 class="text-center mb-4">𝐀𝐛𝐨𝐮𝐭 𝐌𝐞</h2>
             <p class="text-center">
-               ɪ ᴀᴍ ᴀ ᴅᴇᴅɪᴄᴀᴛᴇᴅ ʙᴀᴄᴋᴇɴᴅ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴡɪᴛʜ ᴀ ꜱᴛʀᴏɴɢ ᴄᴏᴍᴍᴀɴᴅ ᴏꜰ
+                ɪ ᴀᴍ ᴀ ᴅᴇᴅɪᴄᴀᴛᴇᴅ ʙᴀᴄᴋᴇɴᴅ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴡɪᴛʜ ᴀ ꜱᴛʀᴏɴɢ ᴄᴏᴍᴍᴀɴᴅ ᴏꜰ
                 ꜱᴇʀᴠᴇʀ-ꜱɪᴅᴇ ᴘʀᴏɢʀᴀᴍᴍɪɴɢ, ᴀᴘɪ ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ, ᴀɴᴅ ᴅᴀᴛᴀʙᴀꜱᴇ
                 ᴍᴀɴᴀɢᴇᴍᴇɴᴛ.
                 ᴍʏ ᴇxᴘᴇʀᴛɪꜱᴇ ʟɪᴇꜱ ɪɴ ᴅᴇꜱɪɢɴɪɴɢ ꜱᴄᴀʟᴀʙʟᴇ ᴀɴᴅ ꜱᴇᴄᴜʀᴇ ʙᴀᴄᴋᴇɴᴅ
@@ -758,38 +811,37 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <footer id="contact" class="container my-5">
-            <div class="d-flex justify-content-center">
-                <div class="contact text-center">
-                    <p>📞 +91 𝟴𝟳𝟴𝟴𝟰𝟱𝟳𝟭𝟯𝟯 | ✉️
-                        kandekaryash33@gmail.com</p>
-                    <div class="mb-4">
-                        <a href="https://www.linkedin.com/in/yash-kandekar-121452241/"
-                            class="circle-icon me-4">
-                            <img src="image.png"
-                                style="height: 50px; width: 50px;">
-                        </a>
-                        <a href="https://github.com/yashkandekar2004"
-                            target="_blank" class="circle-icon">
-                            <img src="github-6980894_960_720.webp" alt="GitHub"
-                                style="height: 45px; width: 45px;">
-                        </a>
-                    </div>
-                </div>
-            </footer>
-
-            <!-- 
+   <section id="contact-form" class="container my-5">
+  <h2 class="text-center mb-4">𝐆𝐞𝐭 𝐢𝐧 𝐓𝐨𝐮𝐜𝐡</h2>
+  <form id="contactForm" action="https://formspree.io/f/manjrdnk" method="POST" class="mx-auto" style="max-width: 600px;">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="_replyto" id="email" class="form-control" placeholder="Enter your email" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea name="message" id="message" rows="5" class="form-control" placeholder="Your message..." required></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-success px-4">Send Message</button>
+    </div>
+    <p id="successMsg" class="text-success mt-3 d-none text-center">Thank you! Your message has been sent.</p>
+  </form>
+</section>
+        <!-- 
     <footer class="footer">
         <p>&copy; 2025 Yash Kandekar. All Rights Reserved.</p>
         <p>Follow me on <a href="https://twitter.com/">Twitter</a> and <a href="https://www.linkedin.com/">LinkedIn</a>.
         </p>
     </footer> -->
 
-            <script
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
         function createBubble() {
             const bubbleContainer = document.querySelector('.bubble-container');
             const bubble = document.createElement('div');
@@ -817,7 +869,31 @@
         for (let i = 0; i < 15; i++) {
             setTimeout(createBubble, Math.random() * 2000);
         }
-    </script>
-        </body>
 
-    </html>
+
+       const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        successMsg.classList.remove('d-none');
+      } else {
+        alert('Something went wrong. Please try again!');
+      }
+    });
+  });
+    </script>
+    </body>
+
+</html>
