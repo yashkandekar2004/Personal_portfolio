@@ -59,6 +59,7 @@ export default function Resume() {
           </p>
 
           <div
+            className="resume-actions-row"
             style={{
               display: 'flex',
               justifyContent: 'center',

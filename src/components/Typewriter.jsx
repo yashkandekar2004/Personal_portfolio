@@ -36,15 +36,15 @@ export default function Typewriter({ words = [], typingSpeed = 90, deletingSpeed
   }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
 
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
-      <span className="gradient-text" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
+      <span className="gradient-text" style={{ fontWeight: 700, wordBreak: 'break-word' }}>
         {text}
       </span>
       <span
         className="typewriter-cursor"
         style={{
           display: 'inline-block',
-          marginLeft: '3px',
+          marginLeft: '2px',
           color: 'var(--accent-cyan)',
           fontWeight: 400,
           animation: 'cursorBlink 1s infinite'
@@ -55,4 +55,3 @@ export default function Typewriter({ words = [], typingSpeed = 90, deletingSpeed
     </span>
   );
 }
-

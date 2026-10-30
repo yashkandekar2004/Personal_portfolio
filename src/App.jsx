@@ -15,10 +15,10 @@ export default function App() {
   useScrollReveal();
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
       <BubbleBackground />
       <Navbar />
-      <main>
+      <main style={{ width: '100%', overflowX: 'hidden' }}>
         <Hero />
         <div className="reveal"><About /></div>
         <div className="reveal"><Experience /></div>

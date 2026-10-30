@@ -23,7 +23,7 @@
 
 /* Custom Animated Scrollbar for Webkit Browsers */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -435,6 +435,13 @@ input, textarea {
   width: 100%;
 }
 
+.hero-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 .hero-highlights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -526,8 +533,13 @@ input, textarea {
 
 @media (max-width: 890px) {
   .hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .hero-avatar-col {
+    order: -1 !important;
+    margin-bottom: 0.5rem !important;
   }
   .hero-text-col {
     text-align: center !important;
@@ -561,20 +573,20 @@ input, textarea {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.15rem !important;
+    padding: 0 1rem !important;
   }
   section {
-    padding: 3.5rem 0 !important;
+    padding: 3rem 0 !important;
   }
   .section-title {
     font-size: 1.85rem !important;
   }
   .section-subtitle {
-    margin-bottom: 2.25rem !important;
+    margin-bottom: 2rem !important;
     font-size: 0.95rem !important;
   }
   .card-responsive {
-    padding: 1.4rem 1.15rem !important;
+    padding: 1.35rem 1.15rem !important;
     border-radius: 14px !important;
   }
   .interactive-card:hover {
@@ -596,6 +608,11 @@ input, textarea {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
   }
+  .ambient-blob {
+    width: 260px !important;
+    height: 260px !important;
+    filter: blur(50px) !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -608,13 +625,14 @@ input, textarea {
     justify-content: center !important;
   }
   .hero-avatar-wrapper {
-    width: 230px !important;
-    height: 230px !important;
+    width: 210px !important;
+    height: 210px !important;
   }
   .hero-floating-pill {
     bottom: -10px !important;
-    right: 50% !important;
-    transform: translateX(50%) !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
     font-size: 0.78rem !important;
     white-space: nowrap !important;
   }
@@ -633,5 +651,13 @@ input, textarea {
   }
   .experience-meta-col div {
     justify-content: flex-start !important;
+  }
+  .resume-actions-row {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .resume-actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
   }
 }

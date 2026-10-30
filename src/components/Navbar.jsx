@@ -132,19 +132,20 @@ export default function Navbar() {
           className="navbar-mobile-drawer"
           style={{
             position: 'fixed',
-            top: '60px',
+            top: '56px',
             left: 0,
             right: 0,
             bottom: 0,
+            height: 'calc(100dvh - 56px)',
             backgroundColor: 'rgba(15, 23, 42, 0.98)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             borderTop: '1px solid var(--border-color)',
-            padding: '1.5rem',
+            padding: '1.25rem 1rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            zIndex: 49,
+            zIndex: 9999,
             overflowY: 'auto'
           }}
         >

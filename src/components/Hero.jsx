@@ -16,11 +16,11 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        minHeight: '92vh',
+        minHeight: '90vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: '6.5rem',
-        paddingBottom: '3.5rem'
+        paddingTop: '6rem',
+        paddingBottom: '3rem'
       }}
     >
       <div className="container">
@@ -35,13 +35,13 @@ export default function Hero() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.65rem',
-                padding: '0.45rem 1.15rem',
+                padding: '0.4rem 1rem',
                 borderRadius: '9999px',
                 border: '1px solid rgba(6, 182, 212, 0.35)',
                 color: 'var(--accent-cyan)',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 fontWeight: 600,
-                marginBottom: '1.5rem',
+                marginBottom: '1.25rem',
                 boxShadow: '0 0 20px rgba(6, 182, 212, 0.2)'
               }}
             >
@@ -52,14 +52,14 @@ export default function Hero() {
               Available for Opportunities
             </div>
 
-            {/* Main Heading with Blur-to-Clear Entrance */}
+            {/* Main Heading with Responsive Font Sizing */}
             <h1
-              className="animate-word-in"
+              className="animate-word-in hero-heading"
               style={{
-                fontSize: 'clamp(2.1rem, 3.8vw, 3.4rem)',
+                fontSize: 'clamp(1.85rem, 5.5vw, 3.4rem)',
                 fontWeight: 800,
                 lineHeight: 1.2,
-                marginBottom: '1rem',
+                marginBottom: '0.85rem',
                 color: '#fff'
               }}
             >
@@ -70,13 +70,15 @@ export default function Hero() {
             <div
               className="hero-typewriter-row"
               style={{
-                fontSize: 'clamp(1.15rem, 2.2vw, 1.6rem)',
+                fontSize: 'clamp(1.05rem, 4.2vw, 1.5rem)',
                 color: 'var(--text-muted)',
                 fontWeight: 500,
                 marginBottom: '1.25rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.45rem'
+                flexWrap: 'wrap',
+                gap: '0.45rem',
+                lineHeight: 1.4
               }}
             >
               <span style={{ flexShrink: 0 }}>I am a</span>
@@ -87,17 +89,17 @@ export default function Hero() {
             <p
               style={{
                 maxWidth: '600px',
-                fontSize: '1.02rem',
+                fontSize: '1rem',
                 color: 'var(--text-muted)',
                 lineHeight: 1.7,
-                marginBottom: '2.25rem'
+                marginBottom: '2rem'
               }}
             >
               {personalInfo.tagline} Focused on crafting clean architecture, high-throughput microservices, and reliable data pipelines.
             </p>
 
             {/* Call to Actions */}
-            <div className="hero-actions-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+            <div className="hero-actions-row">
               <a href="#projects" className="btn btn-primary">
                 Explore Projects <ArrowRight size={18} />
               </a>
@@ -112,6 +114,7 @@ export default function Hero() {
 
           {/* Right Column: Profile Avatar with Glowing Conic Aura */}
           <div
+            className="hero-avatar-col"
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -123,19 +126,19 @@ export default function Hero() {
               className="hero-avatar-wrapper"
               style={{
                 position: 'relative',
-                width: 'clamp(240px, 28vw, 320px)',
-                height: 'clamp(240px, 28vw, 320px)'
+                width: 'clamp(210px, 50vw, 300px)',
+                height: 'clamp(210px, 50vw, 300px)'
               }}
             >
               {/* Rotating Gradient Aura */}
               <div
                 style={{
                   position: 'absolute',
-                  inset: '-10px',
+                  inset: '-8px',
                   borderRadius: '50%',
                   background: 'conic-gradient(from 0deg, #06b6d4, #3b82f6, #a855f7, #06b6d4)',
                   animation: 'spinAura 9s linear infinite',
-                  filter: 'blur(16px)',
+                  filter: 'blur(14px)',
                   opacity: 0.65
                 }}
               />
@@ -148,7 +151,7 @@ export default function Hero() {
                   height: '100%',
                   borderRadius: '50%',
                   overflow: 'hidden',
-                  padding: '4px',
+                  padding: '3px',
                   background: 'linear-gradient(135deg, #06b6d4, #3b82f6, #a855f7)',
                   boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
                 }}
@@ -179,22 +182,23 @@ export default function Hero() {
                 className="interactive-card shimmer-badge hero-floating-pill"
                 style={{
                   position: 'absolute',
-                  bottom: '12px',
+                  bottom: '10px',
                   right: '0',
                   backgroundColor: 'rgba(15, 23, 42, 0.95)',
                   border: '1.5px solid rgba(6, 182, 212, 0.5)',
-                  padding: '0.45rem 1rem',
+                  padding: '0.4rem 0.9rem',
                   borderRadius: '9999px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.45rem',
-                  fontSize: '0.85rem',
+                  fontSize: '0.82rem',
                   fontWeight: 700,
                   color: '#ffffff',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)'
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+                  zIndex: 2
                 }}
               >
-                <Sparkles size={15} color="var(--accent-cyan)" />
+                <Sparkles size={14} color="var(--accent-cyan)" />
                 <span>Software Developer</span>
               </div>
             </div>
@@ -206,7 +210,7 @@ export default function Hero() {
           <div
             className="interactive-card"
             style={{
-              padding: '1.35rem 1.5rem',
+              padding: '1.25rem 1.35rem',
               borderRadius: '14px',
               backgroundColor: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
@@ -218,18 +222,18 @@ export default function Hero() {
             }}
           >
             <div className="card-icon" style={{ color: 'var(--accent-cyan)' }}>
-              <Server size={28} />
+              <Server size={26} />
             </div>
             <div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Core Stack</div>
-              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>Node.js & Fastify</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Core Stack</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.98rem' }}>Node.js & Fastify</div>
             </div>
           </div>
 
           <div
             className="interactive-card"
             style={{
-              padding: '1.35rem 1.5rem',
+              padding: '1.25rem 1.35rem',
               borderRadius: '14px',
               backgroundColor: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
@@ -241,18 +245,18 @@ export default function Hero() {
             }}
           >
             <div className="card-icon" style={{ color: 'var(--accent-blue)' }}>
-              <Database size={28} />
+              <Database size={26} />
             </div>
             <div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Data Stores</div>
-              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>PostgreSQL & Mongo</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Data Stores</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.98rem' }}>PostgreSQL & Mongo</div>
             </div>
           </div>
 
           <div
             className="interactive-card"
             style={{
-              padding: '1.35rem 1.5rem',
+              padding: '1.25rem 1.35rem',
               borderRadius: '14px',
               backgroundColor: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
@@ -264,11 +268,11 @@ export default function Hero() {
             }}
           >
             <div className="card-icon" style={{ color: '#10b981' }}>
-              <Terminal size={28} />
+              <Terminal size={26} />
             </div>
             <div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>API Architecture</div>
-              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>RESTful & Scalable</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>API Architecture</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.98rem' }}>RESTful & Scalable</div>
             </div>
           </div>
         </div>
