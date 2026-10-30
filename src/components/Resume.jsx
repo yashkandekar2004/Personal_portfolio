@@ -3,6 +3,9 @@ import { personalInfo, educationAndCertifications } from '../data/portfolioData'
 import { FileDown, ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
 
 export default function Resume() {
+  const edu = educationAndCertifications?.education || {};
+  const cert = educationAndCertifications?.certification || {};
+
   return (
     <section id="resume" className="py-14 sm:py-20 lg:py-24 bg-slate-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,13 +63,13 @@ export default function Resume() {
                 </div>
                 <div>
                   <div className="text-base font-bold text-white">
-                    {educationAndCertifications.degree}
+                    {edu.degree || "Bachelor of Computer Applications (BCA)"}
                   </div>
                   <div className="text-xs sm:text-sm text-cyan-400 font-medium">
-                    {educationAndCertifications.university}
+                    {edu.university || "Savitribai Phule Pune University"}
                   </div>
                   <div className="text-xs text-slate-400 mt-1">
-                    Graduation Year: {educationAndCertifications.year}
+                    {edu.field || "Computer Science & Application Development"}
                   </div>
                 </div>
               </div>
@@ -78,10 +81,10 @@ export default function Resume() {
                 </div>
                 <div>
                   <div className="text-base font-bold text-white">
-                    {educationAndCertifications.certifications[0]?.name || "React JS Certification"}
+                    {cert.title || "React.js Certification"}
                   </div>
                   <div className="text-xs sm:text-sm text-blue-400 font-medium">
-                    {educationAndCertifications.certifications[0]?.issuer || "The Baap Company"}
+                    {cert.issuer || "The Baap Company"}
                   </div>
                   <div className="text-xs text-slate-400 mt-1">
                     Frontend Architecture & Modern Component Patterns

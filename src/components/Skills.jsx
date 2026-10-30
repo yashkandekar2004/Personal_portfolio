@@ -7,16 +7,16 @@ export default function Skills() {
     switch (category) {
       case 'Backend & APIs':
         return <Server size={22} className="text-cyan-400" />;
+      case 'Databases':
       case 'Databases & Storage':
         return <Database size={22} className="text-blue-400" />;
       case 'Frontend':
         return <Layout size={22} className="text-emerald-400" />;
+      case 'Tools & Concepts':
       case 'Tools & Platforms':
         return <Wrench size={22} className="text-amber-400" />;
-      case 'Engineering Practices':
-        return <CheckCircle2 size={22} className="text-purple-400" />;
       default:
-        return <Server size={22} className="text-cyan-400" />;
+        return <CheckCircle2 size={22} className="text-purple-400" />;
     }
   };
 
@@ -32,7 +32,7 @@ export default function Skills() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-          {technicalSkills.map((cat, idx) => (
+          {(technicalSkills || []).map((cat, idx) => (
             <div
               key={idx}
               className="interactive-card bg-slate-800/60 rounded-2xl p-5 sm:p-6 border border-white/10 backdrop-blur-md flex flex-col justify-start"
@@ -47,8 +47,9 @@ export default function Skills() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill, sIdx) => {
-                  const skillName = typeof skill === 'string' ? skill : skill.name;
+                {(cat.skills || []).map((skill, sIdx) => {
+                  const skillName = typeof skill === 'string' ? skill : skill?.name;
+                  if (!skillName) return null;
                   return (
                     <div
                       key={sIdx}

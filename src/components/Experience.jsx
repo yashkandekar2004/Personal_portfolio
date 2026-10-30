@@ -3,6 +3,8 @@ import { experience, keyAchievements } from '../data/portfolioData';
 import { Briefcase, Calendar, CheckCircle2, Trophy, MapPin } from 'lucide-react';
 
 export default function Experience() {
+  const achievements = Array.isArray(keyAchievements) ? keyAchievements : [];
+
   return (
     <section id="experience" className="py-14 sm:py-20 lg:py-24 bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +17,7 @@ export default function Experience() {
         </p>
 
         {/* Company Cards */}
-        {experience.map((exp, idx) => (
+        {(experience || []).map((exp, idx) => (
           <div
             key={idx}
             className="interactive-card bg-slate-800/60 rounded-2xl border border-white/10 p-5 sm:p-8 lg:p-10 backdrop-blur-md mb-8 sm:mb-12 shadow-xl"
@@ -48,7 +50,7 @@ export default function Experience() {
             {/* Bullets directly from resume */}
             <div className="mb-6">
               <ul className="space-y-3">
-                {exp.points.map((point, pIdx) => (
+                {(exp.bullets || exp.points || []).map((point, pIdx) => (
                   <li key={pIdx} className="flex items-start gap-3 text-slate-300 text-sm sm:text-base leading-relaxed">
                     <span className="text-cyan-400 mt-1 shrink-0">
                       <CheckCircle2 size={18} />
@@ -65,7 +67,7 @@ export default function Experience() {
                 Technologies Used:
               </div>
               <div className="flex flex-wrap gap-2">
-                {exp.technologies.map((tech, tIdx) => (
+                {(exp.techStack || exp.technologies || []).map((tech, tIdx) => (
                   <span
                     key={tIdx}
                     className="text-xs sm:text-sm font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300"
@@ -79,36 +81,33 @@ export default function Experience() {
         ))}
 
         {/* Quantifiable Highlights / Achievements Banner */}
-        <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-blue-950/40 border border-cyan-500/20">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0">
-              <Trophy size={24} />
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white">Engineering Impact & Achievements</h3>
-              <p className="text-xs sm:text-sm text-slate-400">Measurable results delivered during tenure</p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {keyAchievements.map((ach, aIdx) => (
-              <div
-                key={aIdx}
-                className="p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 transition-colors"
-              >
-                <div className="text-xl sm:text-2xl font-extrabold text-cyan-400 mb-1">
-                  {ach.metric}
-                </div>
-                <div className="text-sm font-semibold text-white mb-1">
-                  {ach.title}
-                </div>
-                <div className="text-xs text-slate-400 leading-normal">
-                  {ach.description}
-                </div>
+        {achievements.length > 0 && (
+          <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-blue-950/40 border border-cyan-500/20">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0">
+                <Trophy size={24} />
               </div>
-            ))}
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">Engineering Impact & Achievements</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Key achievements and core strengths</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {achievements.map((ach, aIdx) => (
+                <div
+                  key={aIdx}
+                  className="p-4 rounded-xl bg-slate-900/80 border border-white/10 flex items-start gap-3 hover:border-cyan-500/40 transition-colors"
+                >
+                  <CheckCircle2 size={18} className="text-cyan-400 mt-0.5 shrink-0" />
+                  <span className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    {typeof ach === 'string' ? ach : (ach.title || ach.description || JSON.stringify(ach))}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

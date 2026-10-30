@@ -106,7 +106,7 @@ export default function Contact() {
             <div className="pt-4 border-t border-white/10 flex items-center gap-3">
               <span className="text-xs text-slate-400 font-semibold uppercase">Follow:</span>
               <a
-                href={personalInfo.linkedin}
+                href={personalInfo.socialLinks?.linkedin || personalInfo.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/50 flex items-center justify-center transition-all"
@@ -115,7 +115,7 @@ export default function Contact() {
                 <LinkedinIcon size={18} />
               </a>
               <a
-                href={personalInfo.github}
+                href={personalInfo.socialLinks?.github || personalInfo.github}
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/50 flex items-center justify-center transition-all"
