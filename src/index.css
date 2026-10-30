@@ -1,0 +1,390 @@
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card-hover: rgba(51, 65, 85, 0.85);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(56, 189, 248, 0.45);
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 #090d16;
+}
+
+/* Custom Animated Scrollbar for Webkit Browsers (Chrome, Edge, Safari, Brave) */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #3b82f6, #a855f7, #06b6d4);
+  background-size: 100% 300%;
+  border-radius: 9999px;
+  border: 2px solid #090d16;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+  animation: scrollbarShimmer 6s linear infinite;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #38bdf8, #60a5fa, #c084fc, #38bdf8);
+  background-size: 100% 300%;
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.9);
+}
+
+@keyframes scrollbarShimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 300%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background floating glow effect */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.16;
+  animation: floatSlow 18s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-cyan);
+  top: -120px;
+  left: -120px;
+}
+
+.blob-2 {
+  width: 550px;
+  height: 550px;
+  background: var(--accent-blue);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -5s;
+}
+
+@keyframes floatSlow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.1); }
+  100% { transform: translate(-30px, 80px) scale(0.95); }
+}
+
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 3.5rem auto;
+  font-size: 1.05rem;
+}
+
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: var(--accent-gradient);
+  margin: 0.75rem auto 1.5rem auto;
+  border-radius: 2px;
+}
+
+/* Common Section */
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(6, 182, 212, 0.08);
+  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.2);
+}
+
+/* Floating particle bubble container */
+.bubble-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.05));
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  animation: bubbleFloat var(--anim-duration) ease-in infinite;
+  bottom: -60px;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   ANIMATIONS & SCROLL REVEAL STYLES
+   ========================================= */
+
+/* Cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Green Status Pulse Ring */
+.status-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 10px #10b981;
+}
+
+.status-ring {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #10b981;
+  opacity: 0.75;
+  animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  80%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Rotating Conic Aura Animation for Profile Photo */
+@keyframes spinAura {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Scroll Reveal with 3D Entrance & Blur-to-Clear */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97) rotateX(6deg);
+  filter: blur(6px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+  perspective: 1000px;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0deg);
+  filter: blur(0px);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.45s;
+}
+
+/* Blur-to-Clear Word Reveal (SchoolNetwork inspired) */
+@keyframes wordIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5em);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.animate-word-in {
+  animation: wordIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 3D Perspective Card Hover (SchoolNetwork inspired) */
+.interactive-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.interactive-card:hover {
+  transform: translateY(-8px) scale(1.015) rotateX(2deg);
+  border-color: var(--border-hover) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.42), 0 0 25px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* Playful Icon Hover Tilt */
+.interactive-card:hover .card-icon {
+  transform: scale(1.15) rotate(10deg);
+  color: var(--accent-cyan) !important;
+}
+
+.card-icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.35s ease;
+  display: inline-block;
+}
+
+/* Shimmer Light Reflection Sweep (SchoolNetwork inspired) */
+@keyframes shineSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-badge {
+  background: linear-gradient(
+    90deg,
+    rgba(6, 182, 212, 0.1) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shineSweep 4s ease-in-out infinite;
+}
