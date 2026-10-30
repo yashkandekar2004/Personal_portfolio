@@ -9,7 +9,11 @@ export const personalInfo = {
   phone: "8788457133",
   location: "Sangamner, Maharashtra",
   socialLinks: {
-    github: "https://github.com/",
+    github: "https://github.com/yashkandekar2004",
+    linkedin: "https://linkedin.com/in/yash-kandekar-121452241/"
+  },
+  socials: {
+    github: "https://github.com/yashkandekar2004",
     linkedin: "https://linkedin.com/in/yash-kandekar-121452241/"
   }
 };

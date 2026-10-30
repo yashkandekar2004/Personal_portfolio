@@ -150,7 +150,7 @@ export default function Contact() {
               </span>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <a
-                  href={personalInfo.socials.github}
+                  href={personalInfo.socials?.github || personalInfo.socialLinks?.github || "https://github.com/yashkandekar2004"}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Visit Yash Kandekar's GitHub profile"
@@ -160,7 +160,7 @@ export default function Contact() {
                   <GithubIcon size={16} /> GitHub
                 </a>
                 <a
-                  href={personalInfo.socials.linkedin}
+                  href={personalInfo.socials?.linkedin || personalInfo.socialLinks?.linkedin || "https://linkedin.com/in/yash-kandekar-121452241/"}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Visit Yash Kandekar's LinkedIn profile"
