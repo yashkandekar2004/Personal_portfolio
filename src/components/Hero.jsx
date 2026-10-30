@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowRight, Mail, FileDown, Database, Server, Sparkles } from 'lucide-react';
+import { ArrowRight, Mail, FileDown, Terminal, Database, Server, Sparkles } from 'lucide-react';
 import Typewriter from './Typewriter';
 
 export default function Hero() {
@@ -15,78 +15,162 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-[90vh] flex items-center pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16"
+      style={{
+        minHeight: '92vh',
+        display: 'flex',
+        alignItems: 'center',
+        paddingTop: '6.5rem',
+        paddingBottom: '3.5rem'
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Main Hero Responsive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
-          
-          {/* Left Column: Bio & Actions */}
-          <div className="lg:col-span-7 text-left order-2 lg:order-1">
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 rounded-full border border-cyan-500/40 text-cyan-400 text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-[0_0_20px_rgba(6,182,212,0.2)] shimmer-badge max-w-full">
-              <div className="status-indicator shrink-0">
+      <div className="container">
+        {/* Main 2-Column Hero Grid */}
+        <div
+          className="hero-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1.45fr) minmax(280px, 0.85fr)',
+            gap: '2.5rem',
+            alignItems: 'center',
+            marginBottom: '4rem'
+          }}
+        >
+          {/* Left Column: Text & Actions */}
+          <div style={{ textAlign: 'left' }} className="hero-text-col">
+            {/* Status Badge with Pulsing Ring & Shimmer */}
+            <div
+              className="shimmer-badge"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.65rem',
+                padding: '0.45rem 1.15rem',
+                borderRadius: '9999px',
+                border: '1px solid rgba(6, 182, 212, 0.35)',
+                color: 'var(--accent-cyan)',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                marginBottom: '1.5rem',
+                boxShadow: '0 0 20px rgba(6, 182, 212, 0.2)'
+              }}
+            >
+              <div className="status-indicator">
                 <span className="status-ring" />
                 <span className="status-dot" />
               </div>
-              <span className="truncate">Available for Engineering Opportunities</span>
+              Available for Engineering Opportunities
             </div>
 
-            {/* Main Heading */}
-            <h1 className="animate-word-in text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-3 sm:mb-4">
-              Hi, I'm <span className="gradient-text whitespace-nowrap">{personalInfo.name}</span>
+            {/* Main Heading with Blur-to-Clear Entrance */}
+            <h1
+              className="animate-word-in"
+              style={{
+                fontSize: 'clamp(2.1rem, 3.8vw, 3.4rem)',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                marginBottom: '1rem',
+                color: '#fff'
+              }}
+            >
+              Hi, I'm <span className="gradient-text" style={{ whiteSpace: 'nowrap' }}>{personalInfo.name}</span>
             </h1>
 
-            {/* Typewriter Subtitle on a Single Row */}
-            <div className="flex items-center gap-2 text-lg sm:text-2xl md:text-3xl text-slate-300 font-medium mb-4 sm:mb-5 min-h-[2.4rem] whitespace-nowrap overflow-x-hidden">
-              <span className="shrink-0 text-slate-400">I am a</span>
-              <span className="text-cyan-400 font-bold overflow-hidden text-ellipsis">
-                <Typewriter words={roles} typingSpeed={85} deletingSpeed={45} pauseTime={1800} />
-              </span>
+            {/* Animated Subtitle / Role with Typewriter on ONE single line */}
+            <div
+              className="hero-typewriter-row"
+              style={{
+                fontSize: 'clamp(1.15rem, 2.2vw, 1.6rem)',
+                color: 'var(--text-muted)',
+                fontWeight: 500,
+                marginBottom: '1.25rem',
+                minHeight: '2.4rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <span style={{ flexShrink: 0 }}>I am a</span>
+              <Typewriter words={roles} typingSpeed={85} deletingSpeed={45} pauseTime={1800} />
             </div>
 
             {/* Tagline */}
-            <p className="text-sm sm:text-base lg:text-lg text-slate-400 leading-relaxed max-w-2xl mb-6 sm:mb-8">
+            <p
+              style={{
+                maxWidth: '600px',
+                fontSize: '1.05rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.7,
+                marginBottom: '2.5rem'
+              }}
+            >
               {personalInfo.tagline} Focused on crafting clean architecture, high-throughput microservices, and reliable data pipelines.
             </p>
 
             {/* Call to Actions */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-              <a
-                href="#projects"
-                className="btn btn-primary py-3 px-6 text-sm sm:text-base justify-center"
-              >
+            <div
+              className="hero-actions-row"
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1rem',
+                alignItems: 'center'
+              }}
+            >
+              <a href="#projects" className="btn btn-primary">
                 Explore Projects <ArrowRight size={18} />
               </a>
-              <a
-                href="#contact"
-                className="btn btn-outline py-3 px-6 text-sm sm:text-base justify-center"
-              >
+              <a href="#contact" className="btn btn-outline">
                 <Mail size={18} /> Contact Me
               </a>
-              <a
-                href={personalInfo.resumeUrl}
-                download
-                className="btn btn-outline py-3 px-6 text-sm sm:text-base justify-center"
-              >
+              <a href={personalInfo.resumeUrl} download className="btn btn-outline">
                 <FileDown size={18} /> Resume
               </a>
             </div>
           </div>
 
           {/* Right Column: Profile Avatar with Glowing Conic Aura */}
-          <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative'
+            }}
+          >
+            <div
+              style={{
+                position: 'relative',
+                width: 'clamp(260px, 28vw, 320px)',
+                height: 'clamp(260px, 28vw, 320px)'
+              }}
+            >
               {/* Rotating Gradient Aura */}
               <div
-                className="absolute -inset-2.5 sm:-inset-3 rounded-full blur-xl opacity-70 animate-[spinAura_9s_linear_infinite]"
                 style={{
-                  background: 'conic-gradient(from 0deg, #06b6d4, #3b82f6, #a855f7, #06b6d4)'
+                  position: 'absolute',
+                  inset: '-10px',
+                  borderRadius: '50%',
+                  background: 'conic-gradient(from 0deg, #06b6d4, #3b82f6, #a855f7, #06b6d4)',
+                  animation: 'spinAura 9s linear infinite',
+                  filter: 'blur(16px)',
+                  opacity: 0.65
                 }}
               />
 
               {/* Suit Portrait Frame */}
-              <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 shadow-2xl overflow-hidden">
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  padding: '4px',
+                  background: 'linear-gradient(135deg, #06b6d4, #3b82f6, #a855f7)',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
+                }}
+              >
                 <img
                   src="/profile.webp"
                   alt="Yash Kandekar - Software Developer"
@@ -94,53 +178,149 @@ export default function Hero() {
                   height={320}
                   fetchPriority="high"
                   decoding="async"
-                  className="w-full h-full object-cover rounded-full scale-105 transition-transform duration-500 hover:scale-110"
-                  style={{ objectPosition: 'center 20%' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 20%',
+                    transform: 'scale(1.05)',
+                    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.12)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
                 />
               </div>
 
               {/* Floating Status Pill */}
-              <div className="absolute bottom-2 right-0 sm:bottom-3 sm:-right-2 bg-slate-900/95 border border-cyan-400/50 py-1.5 px-3 sm:px-4 rounded-full flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white shadow-xl shimmer-badge backdrop-blur-md whitespace-nowrap">
-                <Sparkles size={14} className="text-cyan-400 shrink-0" />
+              <div
+                className="interactive-card shimmer-badge"
+                style={{
+                  position: 'absolute',
+                  bottom: '12px',
+                  right: '-10px',
+                  backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                  border: '1.5px solid rgba(6, 182, 212, 0.5)',
+                  padding: '0.45rem 1rem',
+                  borderRadius: '9999px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)'
+                }}
+              >
+                <Sparkles size={15} color="var(--accent-cyan)" />
                 <span>Software Developer</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Core Highlights Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto">
-          <div className="interactive-card p-4 sm:p-5 rounded-xl bg-slate-800/60 border border-white/10 flex items-center gap-3 sm:gap-4">
-            <div className="card-icon text-cyan-400 shrink-0">
-              <Server size={26} />
+        {/* Backend Highlights Bar Across Container */}
+        <div
+          style={{
+            maxWidth: '1000px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '1.25rem'
+          }}
+        >
+          <div
+            className="interactive-card"
+            style={{
+              padding: '1.35rem 1.5rem',
+              borderRadius: '14px',
+              backgroundColor: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              textAlign: 'left',
+              cursor: 'default'
+            }}
+          >
+            <div className="card-icon" style={{ color: 'var(--accent-cyan)' }}>
+              <Server size={28} />
             </div>
             <div>
-              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Core Stack</div>
-              <div className="text-sm sm:text-base font-bold text-white">Node.js, Fastify, TypeScript</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Core Stack</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>Node.js & Fastify</div>
             </div>
           </div>
 
-          <div className="interactive-card p-4 sm:p-5 rounded-xl bg-slate-800/60 border border-white/10 flex items-center gap-3 sm:gap-4">
-            <div className="card-icon text-blue-400 shrink-0">
-              <Database size={26} />
+          <div
+            className="interactive-card"
+            style={{
+              padding: '1.35rem 1.5rem',
+              borderRadius: '14px',
+              backgroundColor: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              textAlign: 'left',
+              cursor: 'default'
+            }}
+          >
+            <div className="card-icon" style={{ color: 'var(--accent-blue)' }}>
+              <Database size={28} />
             </div>
             <div>
-              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Data Layer</div>
-              <div className="text-sm sm:text-base font-bold text-white">PostgreSQL & Redis Caching</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Data Stores</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>PostgreSQL & Mongo</div>
             </div>
           </div>
 
-          <div className="interactive-card p-4 sm:p-5 rounded-xl bg-slate-800/60 border border-white/10 flex items-center gap-3 sm:gap-4">
-            <div className="card-icon text-emerald-400 shrink-0">
-              <Sparkles size={26} />
+          <div
+            className="interactive-card"
+            style={{
+              padding: '1.35rem 1.5rem',
+              borderRadius: '14px',
+              backgroundColor: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              textAlign: 'left',
+              cursor: 'default'
+            }}
+          >
+            <div className="card-icon" style={{ color: '#10b981' }}>
+              <Terminal size={28} />
             </div>
             <div>
-              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Engineering Focus</div>
-              <div className="text-sm sm:text-base font-bold text-white">Clean APIs & Scalability</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>API Architecture</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>RESTful & Scalable</div>
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 890px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .hero-text-col {
+            text-align: center !important;
+          }
+          .hero-typewriter-row {
+            justify-content: center !important;
+          }
+          .hero-actions-row {
+            justify-content: center !important;
+          }
+          .hero-text-col p {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

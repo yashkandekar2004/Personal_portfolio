@@ -1,96 +1,175 @@
 import React from 'react';
 import { personalInfo, educationAndCertifications } from '../data/portfolioData';
-import { FileDown, ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { FileDown, ExternalLink, Briefcase, GraduationCap, Award, ShieldCheck } from 'lucide-react';
 
 export default function Resume() {
   const edu = educationAndCertifications?.education || {};
   const cert = educationAndCertifications?.certification || {};
 
   return (
-    <section id="resume" className="py-14 sm:py-20 lg:py-24 bg-slate-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">
+    <section id="resume" style={{ backgroundColor: 'rgba(30, 41, 59, 0.3)' }}>
+      <div className="container">
+        <h2 className="section-title">
           Professional <span className="gradient-text">Resume</span>
         </h2>
         <div className="section-divider"></div>
-        <p className="section-subtitle text-sm sm:text-base px-2">
+        <p className="section-subtitle">
           Detailed overview of my engineering experience, projects, education, and technical foundation.
         </p>
 
-        <div className="max-w-4xl mx-auto bg-slate-800/60 rounded-2xl border border-white/10 p-6 sm:p-10 lg:p-12 text-center shadow-2xl backdrop-blur-md">
-          <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mx-auto mb-5 text-cyan-400">
-            <Briefcase size={28} />
+        <div
+          style={{
+            maxWidth: '900px',
+            margin: '0 auto',
+            backgroundColor: 'var(--bg-card)',
+            borderRadius: '20px',
+            border: '1px solid var(--border-color)',
+            padding: '3rem 2rem',
+            textAlign: 'center',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+            backdropFilter: 'blur(10px)'
+          }}
+        >
+          <div
+            style={{
+              width: '70px',
+              height: '70px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(6, 182, 212, 0.1)',
+              border: '1px solid rgba(6, 182, 212, 0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1.5rem auto',
+              color: 'var(--accent-cyan)'
+            }}
+          >
+            <Briefcase size={32} />
           </div>
 
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
+          <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.75rem' }}>
             Ready to review my complete resume?
           </h3>
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+          <p
+            style={{
+              color: 'var(--text-muted)',
+              maxWidth: '600px',
+              margin: '0 auto 2rem auto',
+              fontSize: '1.02rem',
+              lineHeight: 1.6
+            }}
+          >
             Download my professional resume for complete insights into my backend architecture with Node.js & Fastify, PostgreSQL database designs, and production leadership.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              marginBottom: '3rem'
+            }}
+          >
             <a
               href={personalInfo.resumeUrl}
               download
               aria-label="Download Yash Kandekar's Resume in PDF format"
-              className="btn btn-primary py-3 px-6 sm:px-8 text-sm sm:text-base flex items-center justify-center gap-2"
+              className="btn btn-primary"
+              style={{ padding: '0.85rem 2rem', fontSize: '1rem' }}
             >
-              <FileDown size={18} /> Download PDF Resume
+              <FileDown size={20} /> Download PDF Resume
             </a>
             <a
               href={personalInfo.resumeUrl}
               target="_blank"
               rel="noreferrer"
               aria-label="View Yash Kandekar's Resume in a new browser tab"
-              className="btn btn-outline py-3 px-6 sm:px-8 text-sm sm:text-base flex items-center justify-center gap-2"
+              className="btn btn-outline"
+              style={{ padding: '0.85rem 2rem', fontSize: '1rem' }}
             >
-              <ExternalLink size={18} /> View Online Resume
+              <ExternalLink size={20} /> View Online Resume
             </a>
           </div>
 
           {/* Education & Certification Section */}
-          <div className="pt-8 sm:pt-10 border-t border-white/10 text-left">
-            <h4 className="text-sm uppercase font-bold text-slate-300 tracking-wider mb-5 text-center sm:text-left">
-              Education & Certifications
-            </h4>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Education Item */}
-              <div className="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 flex items-start gap-3.5">
-                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0 mt-0.5">
-                  <GraduationCap size={22} />
-                </div>
-                <div>
-                  <div className="text-base font-bold text-white">
-                    {edu.degree || "Bachelor of Computer Applications (BCA)"}
-                  </div>
-                  <div className="text-xs sm:text-sm text-cyan-400 font-medium">
-                    {edu.university || "Savitribai Phule Pune University"}
-                  </div>
-                  <div className="text-xs text-slate-400 mt-1">
-                    {edu.field || "Computer Science & Application Development"}
-                  </div>
-                </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem',
+              borderTop: '1px solid var(--border-color)',
+              paddingTop: '2.5rem',
+              textAlign: 'left'
+            }}
+          >
+            {/* Education */}
+            <div
+              style={{
+                padding: '1.25rem',
+                borderRadius: '12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.06)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>
+                <GraduationCap size={22} />
+                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
+                  Education
+                </span>
               </div>
+              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
+                {edu.degree || "Bachelor of Computer Applications (BCA)"}
+              </h4>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
+                {edu.field || "Computer Science & Application Development"}
+              </p>
+            </div>
 
-              {/* Certification Item */}
-              <div className="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 flex items-start gap-3.5">
-                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 shrink-0 mt-0.5">
-                  <Award size={22} />
-                </div>
-                <div>
-                  <div className="text-base font-bold text-white">
-                    {cert.title || "React.js Certification"}
-                  </div>
-                  <div className="text-xs sm:text-sm text-blue-400 font-medium">
-                    {cert.issuer || "The Baap Company"}
-                  </div>
-                  <div className="text-xs text-slate-400 mt-1">
-                    Frontend Architecture & Modern Component Patterns
-                  </div>
-                </div>
+            {/* Certification */}
+            <div
+              style={{
+                padding: '1.25rem',
+                borderRadius: '12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.06)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: '#10b981' }}>
+                <Award size={22} />
+                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
+                  Certification
+                </span>
               </div>
+              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
+                {cert.title || "React.js Certification"}
+              </h4>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
+                {cert.issuer || "The Baap Company"}
+              </p>
+            </div>
+
+            {/* Strengths */}
+            <div
+              style={{
+                padding: '1.25rem',
+                borderRadius: '12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.06)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: '#a855f7' }}>
+                <ShieldCheck size={22} />
+                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
+                  Key Strengths
+                </span>
+              </div>
+              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
+                Leadership & Support
+              </h4>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
+                REST APIs, Production Support & Mentorship
+              </p>
             </div>
           </div>
         </div>
