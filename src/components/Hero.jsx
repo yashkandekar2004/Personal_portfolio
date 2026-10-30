@@ -88,8 +88,12 @@ export default function Hero() {
               {/* Suit Portrait Frame */}
               <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 shadow-2xl overflow-hidden">
                 <img
-                  src="/profile.jpg"
-                  alt="Yash Kandekar"
+                  src="/profile.webp"
+                  alt="Yash Kandekar - Software Developer"
+                  width={320}
+                  height={320}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover rounded-full scale-105 transition-transform duration-500 hover:scale-110"
                   style={{ objectPosition: 'center 20%' }}
                 />
@@ -111,7 +115,7 @@ export default function Hero() {
               <Server size={26} />
             </div>
             <div>
-              <div className="text-xs text-slate-400 uppercase font-semibold tracking-wider">Core Stack</div>
+              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Core Stack</div>
               <div className="text-sm sm:text-base font-bold text-white">Node.js, Fastify, TypeScript</div>
             </div>
           </div>
@@ -121,7 +125,7 @@ export default function Hero() {
               <Database size={26} />
             </div>
             <div>
-              <div className="text-xs text-slate-400 uppercase font-semibold tracking-wider">Data Layer</div>
+              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Data Layer</div>
               <div className="text-sm sm:text-base font-bold text-white">PostgreSQL & Redis Caching</div>
             </div>
           </div>
@@ -131,7 +135,7 @@ export default function Hero() {
               <Sparkles size={26} />
             </div>
             <div>
-              <div className="text-xs text-slate-400 uppercase font-semibold tracking-wider">Engineering Focus</div>
+              <div className="text-xs text-slate-300 uppercase font-bold tracking-wider">Engineering Focus</div>
               <div className="text-sm sm:text-base font-bold text-white">Clean APIs & Scalability</div>
             </div>
           </div>

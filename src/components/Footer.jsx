@@ -17,32 +17,34 @@ export default function Footer() {
           </span>
         </div>
 
-        <p className="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+        <p className="text-slate-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
           Architecting resilient, scalable backend solutions with modern TypeScript, Node.js, and relational databases.
         </p>
 
-        {/* Quick Links */}
-        <div className="flex gap-4 sm:gap-6 flex-wrap justify-center text-xs sm:text-sm">
+        {/* Quick Links with Accessible Labels */}
+        <nav aria-label="Footer Navigation" className="flex gap-4 sm:gap-6 flex-wrap justify-center text-xs sm:text-sm">
           {['About', 'Experience', 'Skills', 'Projects', 'Resume', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-slate-400 hover:text-cyan-400 transition-colors no-underline font-medium"
+              aria-label={`Footer link to ${item} section`}
+              className="text-slate-300 hover:text-cyan-300 transition-colors no-underline font-medium"
             >
               {item}
             </a>
           ))}
-        </div>
+        </nav>
 
         {/* Bottom credits & Back to Top */}
-        <div className="w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
           <div className="flex items-center gap-1.5">
-            Designed & Engineered by <span className="text-slate-300 font-semibold">{personalInfo.name}</span>
+            Designed & Engineered by <span className="text-white font-semibold">{personalInfo.name}</span>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer bg-white/5 py-1.5 px-3 rounded-full border border-white/10"
+            aria-label="Scroll back to the top of the page"
+            className="flex items-center gap-1.5 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer bg-white/10 py-1.5 px-3 rounded-full border border-white/20"
           >
             <span>Back to Top</span>
             <ArrowUp size={14} />

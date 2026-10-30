@@ -304,22 +304,18 @@ section {
   100% { transform: rotate(360deg); }
 }
 
-/* Scroll Reveal with 3D Entrance & Blur-to-Clear */
+/* Scroll Reveal with 3D Entrance (GPU-composited opacity & transform) */
 .reveal {
   opacity: 0;
-  transform: translateY(28px) scale(0.97) rotateX(6deg);
-  filter: blur(6px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform, filter;
-  perspective: 1000px;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1) rotateX(0deg);
-  filter: blur(0px);
+  transform: translateY(0) scale(1);
 }
 
 .reveal-delay-1 {
@@ -377,19 +373,31 @@ section {
   display: inline-block;
 }
 
-/* Shimmer Light Reflection Sweep (SchoolNetwork inspired) */
-@keyframes shineSweep {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* GPU Composited Shimmer Light Sweep (Zero Layout Shift & Zero CPU repaints) */
+@keyframes shimmerSweep {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(250%); }
 }
 
 .shimmer-badge {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(6, 182, 212, 0.1);
+}
+
+.shimmer-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(6, 182, 212, 0.1) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(6, 182, 212, 0.1) 100%
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
   );
-  background-size: 200% 100%;
-  animation: shineSweep 4s ease-in-out infinite;
+  animation: shimmerSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
 }

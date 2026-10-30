@@ -51,12 +51,12 @@ export default function About() {
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
               <div>
-                <span className="text-xs text-slate-400 block uppercase font-medium">Specialization</span>
-                <strong className="text-sm sm:text-base text-cyan-400 font-semibold">Backend & API Engineering</strong>
+                <span className="text-xs text-slate-300 block uppercase font-semibold">Specialization</span>
+                <strong className="text-sm sm:text-base text-cyan-300 font-semibold">Backend & API Engineering</strong>
               </div>
               <div>
-                <span className="text-xs text-slate-400 block uppercase font-medium">Location</span>
-                <strong className="text-sm sm:text-base text-slate-200 font-semibold">{personalInfo.location}</strong>
+                <span className="text-xs text-slate-300 block uppercase font-semibold">Location</span>
+                <strong className="text-sm sm:text-base text-slate-100 font-semibold">{personalInfo.location}</strong>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function About() {
                 <h4 className="text-base sm:text-lg font-bold text-white mb-1.5">
                   {item.title}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

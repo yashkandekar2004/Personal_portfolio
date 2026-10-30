@@ -30,6 +30,7 @@ export default function Resume() {
             <a
               href={personalInfo.resumeUrl}
               download
+              aria-label="Download Yash Kandekar's Resume in PDF format"
               className="btn btn-primary py-3 px-6 sm:px-8 text-sm sm:text-base flex items-center justify-center gap-2"
             >
               <FileDown size={18} /> Download PDF Resume
@@ -38,6 +39,7 @@ export default function Resume() {
               href={personalInfo.resumeUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="View Yash Kandekar's Resume in a new browser tab"
               className="btn btn-outline py-3 px-6 sm:px-8 text-sm sm:text-base flex items-center justify-center gap-2"
             >
               <ExternalLink size={18} /> View Online Resume
@@ -46,7 +48,7 @@ export default function Resume() {
 
           {/* Education & Certification Section */}
           <div className="pt-8 sm:pt-10 border-t border-white/10 text-left">
-            <h4 className="text-sm uppercase font-bold text-slate-400 tracking-wider mb-5 text-center sm:text-left">
+            <h4 className="text-sm uppercase font-bold text-slate-300 tracking-wider mb-5 text-center sm:text-left">
               Education & Certifications
             </h4>
 

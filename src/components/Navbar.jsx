@@ -60,7 +60,8 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-slate-400 hover:text-cyan-400 font-medium text-sm lg:text-base transition-colors duration-200 no-underline"
+              aria-label={`Jump to ${link.label} section`}
+              className="text-slate-300 hover:text-cyan-300 font-medium text-sm lg:text-base transition-colors duration-200 no-underline"
             >
               {link.label}
             </a>
@@ -68,6 +69,7 @@ export default function Navbar() {
           <a
             href={personalInfo.resumeUrl}
             download
+            aria-label="Download Yash Kandekar's Resume PDF"
             className="btn btn-outline text-xs lg:text-sm py-2 px-4 inline-flex items-center gap-1.5"
           >
             <FileDown size={16} /> Resume
