@@ -5,107 +5,78 @@ import { Cpu, ShieldCheck, Zap, Layers } from 'lucide-react';
 export default function About() {
   const pillars = [
     {
-      icon: <Cpu size={24} color="var(--accent-cyan)" />,
+      icon: <Cpu size={24} className="text-cyan-400" />,
       title: "API Architecture",
       desc: "Designing secure, structured REST APIs with clean endpoint schemas and granular authorization."
     },
     {
-      icon: <Zap size={24} color="var(--accent-blue)" />,
+      icon: <Zap size={24} className="text-blue-400" />,
       title: "Performance & Speed",
       desc: "Optimizing database queries, caching hot data with Redis, and leveraging lightweight Node/Fastify runtimes."
     },
     {
-      icon: <ShieldCheck size={24} color="#10b981" />,
+      icon: <ShieldCheck size={24} className="text-emerald-400" />,
       title: "Reliability & Security",
       desc: "Implementing input validation, token-based authentication (JWT/OAuth), and defense-in-depth security."
     },
     {
-      icon: <Layers size={24} color="#a855f7" />,
+      icon: <Layers size={24} className="text-purple-400" />,
       title: "System Modularity",
       desc: "Structuring clean service boundaries, modular microservices, and maintainable codebase design."
     }
   ];
 
   return (
-    <section id="about">
-      <div className="container">
-        <h2 className="section-title">
+    <section id="about" className="py-14 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">
           About <span className="gradient-text">Me</span>
         </h2>
         <div className="section-divider"></div>
-        <p className="section-subtitle">
+        <p className="section-subtitle text-sm sm:text-base px-2">
           Passionate about backend engineering, data consistency, and developer ergonomics.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '2rem',
-            alignItems: 'center'
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Main Narrative Card */}
-          <div
-            style={{
-              padding: '2.5rem',
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '16px',
-              border: '1px solid var(--border-color)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <h3 style={{ fontSize: '1.4rem', marginBottom: '1.25rem', color: '#fff' }}>
-              Building the invisible backbone of modern web applications.
-            </h3>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1.5rem', fontSize: '1rem' }}>
-              {personalInfo.about}
-            </p>
-            <div
-              style={{
-                display: 'flex',
-                gap: '1rem',
-                flexWrap: 'wrap',
-                paddingTop: '1rem',
-                borderTop: '1px solid var(--border-color)'
-              }}
-            >
+          <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-slate-800/60 border border-white/10 backdrop-blur-md shadow-xl flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-snug">
+                Building the invisible backbone of modern web applications.
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                {personalInfo.about}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
               <div>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Specialization:</span>
-                <strong style={{ display: 'block', color: 'var(--accent-cyan)' }}>Backend & API Engineering</strong>
+                <span className="text-xs text-slate-400 block uppercase font-medium">Specialization</span>
+                <strong className="text-sm sm:text-base text-cyan-400 font-semibold">Backend & API Engineering</strong>
               </div>
-              <div style={{ marginLeft: 'auto' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Location:</span>
-                <strong style={{ display: 'block', color: 'var(--text-main)' }}>{personalInfo.location}</strong>
+              <div>
+                <span className="text-xs text-slate-400 block uppercase font-medium">Location</span>
+                <strong className="text-sm sm:text-base text-slate-200 font-semibold">{personalInfo.location}</strong>
               </div>
             </div>
           </div>
 
           {/* Pillars Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillars.map((item, idx) => (
               <div
                 key={idx}
-                style={{
-                  padding: '1.5rem',
-                  backgroundColor: 'var(--bg-card)',
-                  borderRadius: '12px',
-                  border: '1px solid var(--border-color)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.borderColor = 'var(--border-hover)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'var(--border-color)';
-                }}
+                className="interactive-card p-5 sm:p-6 rounded-xl bg-slate-800/60 border border-white/10 flex flex-col justify-start"
               >
-                <div style={{ marginBottom: '0.8rem' }}>{item.icon}</div>
-                <h4 style={{ fontSize: '1.05rem', color: '#fff', marginBottom: '0.5rem' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{item.desc}</p>
+                <div className="card-icon mb-3">
+                  {item.icon}
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-white mb-1.5">
+                  {item.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -114,4 +85,3 @@ export default function About() {
     </section>
   );
 }
-

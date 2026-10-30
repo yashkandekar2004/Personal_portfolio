@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, FileDown } from 'lucide-react';
+import { Menu, X, FileDown } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Navbar() {
@@ -14,6 +14,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
@@ -25,54 +37,30 @@ export default function Navbar() {
 
   return (
     <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 50,
-        transition: 'all 0.3s ease',
-        backgroundColor: scrolled ? 'rgba(15, 23, 42, 0.9)' : 'rgba(15, 23, 42, 0.4)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: `1px solid ${scrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent'}`,
-        padding: '0.85rem 0'
-      }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-slate-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-lg shadow-black/20'
+          : 'bg-slate-900/40 backdrop-blur-sm border-b border-transparent py-4'
+      }`}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        {/* Brand / Logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand Name */}
         <a
           href="#"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            textDecoration: 'none',
-            color: '#fff',
-            transition: 'transform 0.2s ease'
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+          className="inline-flex items-center text-white no-underline transition-transform hover:scale-105 active:scale-95"
         >
-          <span style={{ fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.02em' }}>
+          <span className="font-extrabold text-xl sm:text-2xl tracking-tight">
             Yash <span className="gradient-text">Kandekar</span>
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="desktop-menu">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              style={{
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.92rem',
-                fontWeight: 500,
-                transition: 'color 0.2s ease',
-                position: 'relative'
-              }}
-              onMouseEnter={(e) => (e.target.style.color = 'var(--accent-cyan)')}
-              onMouseLeave={(e) => (e.target.style.color = 'var(--text-muted)')}
+              className="text-slate-400 hover:text-cyan-400 font-medium text-sm lg:text-base transition-colors duration-200 no-underline"
             >
               {link.label}
             </a>
@@ -80,8 +68,7 @@ export default function Navbar() {
           <a
             href={personalInfo.resumeUrl}
             download
-            className="btn btn-outline"
-            style={{ padding: '0.5rem 1.1rem', fontSize: '0.85rem' }}
+            className="btn btn-outline text-xs lg:text-sm py-2 px-4 inline-flex items-center gap-1.5"
           >
             <FileDown size={16} /> Resume
           </a>
@@ -90,69 +77,41 @@ export default function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="mobile-toggle"
+          className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-colors focus:outline-none"
           aria-label="Toggle navigation"
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'var(--text-main)',
-            cursor: 'pointer',
-            padding: '0.25rem'
-          }}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Overlay */}
       {isOpen && (
-        <div
-          style={{
-            backgroundColor: 'rgba(15, 23, 42, 0.98)',
-            borderBottom: '1px solid var(--border-color)',
-            padding: '1.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.25rem'
-          }}
-        >
-          {navLinks.map((link) => (
+        <div className="md:hidden fixed inset-x-0 top-[61px] bottom-0 bg-slate-950/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col justify-between overflow-y-auto animate-word-in">
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-semibold text-slate-200 hover:text-cyan-400 py-2.5 px-3 rounded-lg hover:bg-white/5 transition-all no-underline"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="pt-6 pb-8 border-t border-white/10">
             <a
-              key={link.label}
-              href={link.href}
+              href={personalInfo.resumeUrl}
+              download
               onClick={() => setIsOpen(false)}
-              style={{
-                color: 'var(--text-main)',
-                textDecoration: 'none',
-                fontSize: '1.05rem',
-                fontWeight: 500
-              }}
+              className="btn btn-primary w-full py-3 text-base flex items-center justify-center gap-2"
             >
-              {link.label}
+              <FileDown size={18} /> Download Resume
             </a>
-          ))}
-          <a
-            href={personalInfo.resumeUrl}
-            download
-            className="btn btn-primary"
-            onClick={() => setIsOpen(false)}
-            style={{ width: '100%' }}
-          >
-            <FileDown size={18} /> Download Resume
-          </a>
+          </div>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-menu { display: none !important; }
-          .mobile-toggle { display: block !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-toggle { display: none !important; }
-        }
-      `}</style>
     </nav>
   );
 }
-

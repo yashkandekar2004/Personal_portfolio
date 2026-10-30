@@ -4,13 +4,13 @@ import { Briefcase, Calendar, CheckCircle2, Trophy, MapPin } from 'lucide-react'
 
 export default function Experience() {
   return (
-    <section id="experience" style={{ backgroundColor: 'rgba(15, 23, 42, 0.4)' }}>
-      <div className="container">
-        <h2 className="section-title">
+    <section id="experience" className="py-14 sm:py-20 lg:py-24 bg-slate-900/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">
           Work <span className="gradient-text">Experience</span>
         </h2>
         <div className="section-divider"></div>
-        <p className="section-subtitle">
+        <p className="section-subtitle text-sm sm:text-base px-2">
           Professional experience delivering scalable full-stack applications, robust REST APIs, and modular backend code.
         </p>
 
@@ -18,171 +18,93 @@ export default function Experience() {
         {experience.map((exp, idx) => (
           <div
             key={idx}
-            className="interactive-card"
-            style={{
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '20px',
-              border: '1px solid var(--border-color)',
-              padding: '2.5rem',
-              backdropFilter: 'blur(10px)',
-              marginBottom: '3rem',
-              boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)'
-            }}
+            className="interactive-card bg-slate-800/60 rounded-2xl border border-white/10 p-5 sm:p-8 lg:p-10 backdrop-blur-md mb-8 sm:mb-12 shadow-xl"
           >
             {/* Header info */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                flexWrap: 'wrap',
-                gap: '1rem',
-                borderBottom: '1px solid var(--border-color)',
-                paddingBottom: '1.5rem',
-                marginBottom: '1.75rem'
-              }}
-            >
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 mb-6 border-b border-white/10">
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-                  <div
-                    style={{
-                      padding: '0.45rem',
-                      borderRadius: '8px',
-                      backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                      color: 'var(--accent-cyan)'
-                    }}
-                  >
+                <div className="flex items-center gap-3 mb-1.5">
+                  <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0">
                     <Briefcase size={22} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 700 }}>{exp.role}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{exp.role}</h3>
                 </div>
-                <div style={{ fontSize: '1.15rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                <div className="text-base sm:text-lg text-cyan-400 font-semibold pl-11 sm:pl-0">
                   {exp.company}
                 </div>
               </div>
 
-              <div style={{ textAlign: 'right' }}>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: '9999px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    fontSize: '0.88rem',
-                    color: 'var(--text-main)',
-                    marginBottom: '0.4rem'
-                  }}
-                >
-                  <Calendar size={14} color="var(--accent-cyan)" />
+              <div className="flex flex-wrap sm:flex-col items-start sm:items-end gap-2 text-xs sm:text-sm">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 font-medium">
+                  <Calendar size={14} className="text-cyan-400" />
                   {exp.duration}
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'var(--text-dim)' }}>
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-400 px-1">
                   <MapPin size={14} /> {exp.location}
-                </div>
+                </span>
               </div>
             </div>
 
             {/* Bullets directly from resume */}
-            <div style={{ marginBottom: '1.75rem' }}>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {exp.bullets.map((bullet, bIdx) => (
-                  <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontSize: '1rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
-                    <CheckCircle2 size={18} color="var(--accent-cyan)" style={{ marginTop: '0.25rem', flexShrink: 0 }} />
-                    <span>{bullet}</span>
+            <div className="mb-6">
+              <ul className="space-y-3">
+                {exp.points.map((point, pIdx) => (
+                  <li key={pIdx} className="flex items-start gap-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                    <span className="text-cyan-400 mt-1 shrink-0">
+                      <CheckCircle2 size={18} />
+                    </span>
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Tech stack pills */}
-            {exp.techStack && (
-              <div
-                style={{
-                  borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-                  paddingTop: '1.25rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: '0.5rem'
-                }}
-              >
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600, marginRight: '0.5rem' }}>
-                  Tech & Concepts:
-                </span>
-                {exp.techStack.map((tech, tIdx) => (
+            {/* Key Stack Badges */}
+            <div className="pt-4 border-t border-white/10">
+              <div className="text-xs uppercase text-slate-400 font-semibold tracking-wider mb-2.5">
+                Technologies Used:
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {exp.technologies.map((tech, tIdx) => (
                   <span
                     key={tIdx}
-                    className="tech-pill-interactive"
-                    style={{
-                      fontSize: '0.82rem',
-                      padding: '0.25rem 0.65rem',
-                      borderRadius: '9999px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      color: 'var(--text-muted)'
-                    }}
+                    className="text-xs sm:text-sm font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-            )}
+            </div>
           </div>
         ))}
 
-        {/* Key Achievements Grid */}
-        <div
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            borderRadius: '20px',
-            border: '1px solid var(--border-color)',
-            padding: '2.5rem',
-            backdropFilter: 'blur(10px)'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div
-              style={{
-                padding: '0.5rem',
-                borderRadius: '8px',
-                backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                color: '#f59e0b'
-              }}
-            >
+        {/* Quantifiable Highlights / Achievements Banner */}
+        <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-blue-950/40 border border-cyan-500/20">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0">
               <Trophy size={24} />
             </div>
-            <h3 style={{ fontSize: '1.35rem', color: '#fff', fontWeight: 700 }}>Key Achievements & Strengths</h3>
+            <div>
+              <h3 className="text-lg sm:text-xl font-bold text-white">Engineering Impact & Achievements</h3>
+              <p className="text-xs sm:text-sm text-slate-400">Measurable results delivered during tenure</p>
+            </div>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.25rem'
-            }}
-          >
-            {keyAchievements.map((ach, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {keyAchievements.map((ach, aIdx) => (
               <div
-                key={idx}
-                style={{
-                  padding: '1.25rem',
-                  borderRadius: '12px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '0.75rem'
-                }}
+                key={aIdx}
+                className="p-4 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 transition-colors"
               >
-                <div style={{ color: '#f59e0b', marginTop: '0.2rem', flexShrink: 0 }}>
-                  <CheckCircle2 size={18} />
+                <div className="text-xl sm:text-2xl font-extrabold text-cyan-400 mb-1">
+                  {ach.metric}
                 </div>
-                <p style={{ fontSize: '0.93rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
-                  {ach}
-                </p>
+                <div className="text-sm font-semibold text-white mb-1">
+                  {ach.title}
+                </div>
+                <div className="text-xs text-slate-400 leading-normal">
+                  {ach.description}
+                </div>
               </div>
             ))}
           </div>

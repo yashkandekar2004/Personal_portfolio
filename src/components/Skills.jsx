@@ -6,87 +6,55 @@ export default function Skills() {
   const getCategoryIcon = (category) => {
     switch (category) {
       case 'Backend & APIs':
-        return <Server size={22} color="var(--accent-cyan)" />;
+        return <Server size={22} className="text-cyan-400" />;
       case 'Databases & Storage':
-        return <Database size={22} color="var(--accent-blue)" />;
+        return <Database size={22} className="text-blue-400" />;
       case 'Frontend':
-        return <Layout size={22} color="#10b981" />;
+        return <Layout size={22} className="text-emerald-400" />;
       case 'Tools & Platforms':
-        return <Wrench size={22} color="#f59e0b" />;
+        return <Wrench size={22} className="text-amber-400" />;
       case 'Engineering Practices':
-        return <CheckCircle2 size={22} color="#a855f7" />;
+        return <CheckCircle2 size={22} className="text-purple-400" />;
       default:
-        return <Server size={22} color="var(--accent-cyan)" />;
+        return <Server size={22} className="text-cyan-400" />;
     }
   };
 
   return (
-    <section id="skills" style={{ backgroundColor: 'rgba(30, 41, 59, 0.3)' }}>
-      <div className="container">
-        <h2 className="section-title">
+    <section id="skills" className="py-14 sm:py-20 lg:py-24 bg-slate-900/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">
           Technical <span className="gradient-text">Skills</span>
         </h2>
         <div className="section-divider"></div>
-        <p className="section-subtitle">
+        <p className="section-subtitle text-sm sm:text-base px-2">
           Hands-on backend development, relational database engineering, and modern web application stack.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem'
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {technicalSkills.map((cat, idx) => (
             <div
               key={idx}
-              className="interactive-card"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                borderRadius: '16px',
-                padding: '1.75rem',
-                border: '1px solid var(--border-color)',
-                backdropFilter: 'blur(10px)',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
+              className="interactive-card bg-slate-800/60 rounded-2xl p-5 sm:p-6 border border-white/10 backdrop-blur-md flex flex-col justify-start"
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                <div
-                  className="card-icon"
-                  style={{
-                    padding: '0.5rem',
-                    borderRadius: '8px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)'
-                  }}
-                >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-white/5 shrink-0">
                   {getCategoryIcon(cat.category)}
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: '#fff' }}>{cat.category}</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                  {cat.category}
+                </h3>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+              <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill, sIdx) => {
                   const skillName = typeof skill === 'string' ? skill : skill.name;
                   return (
                     <div
                       key={sIdx}
-                      className="tech-pill-interactive"
-                      style={{
-                        padding: '0.45rem 0.85rem',
-                        borderRadius: '8px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        fontSize: '0.88rem',
-                        color: 'var(--text-main)',
-                        fontWeight: 500,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.4rem'
-                      }}
+                      className="tech-pill-interactive px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-200 transition-all hover:border-cyan-400/50 hover:bg-cyan-500/10 hover:text-cyan-300"
                     >
-                      <span>{skillName}</span>
+                      {skillName}
                     </div>
                   );
                 })}

@@ -37,300 +37,175 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact">
-      <div className="container">
-        <h2 className="section-title">
+    <section id="contact" className="py-14 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">
           Get in <span className="gradient-text">Touch</span>
         </h2>
         <div className="section-divider"></div>
-        <p className="section-subtitle">
+        <p className="section-subtitle text-sm sm:text-base px-2">
           Have an interesting project, job opportunity, or just want to chat backend engineering? Drop a message!
         </p>
 
-        <div
-          style={{
-            maxWidth: '1000px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '2.5rem'
-          }}
-        >
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Contact Details & Info */}
-          <div
-            style={{
-              padding: '2.5rem',
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '16px',
-              border: '1px solid var(--border-color)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between'
-            }}
-          >
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-slate-800/60 border border-white/10 backdrop-blur-md flex flex-col justify-between shadow-xl">
             <div>
-              <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem' }}>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
                 Let's discuss something great together.
               </h3>
-              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '2rem' }}>
-                I am actively seeking backend engineering roles where I can contribute to building high-performance systems and collaborate with talented engineering teams.
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                I am actively seeking software and backend engineering roles where I can contribute to building high-performance systems and collaborate with talented teams.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div
-                    style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '10px',
-                      backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                      color: 'var(--accent-cyan)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Mail size={20} />
+              <div className="space-y-4 mb-6">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-3.5 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-400/30 transition-all text-slate-200 no-underline group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Mail size={18} />
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Email</span>
-                    <div>
-                      <a
-                        href={`mailto:${personalInfo.email}`}
-                        style={{ color: 'var(--text-main)', fontWeight: 500, textDecoration: 'none' }}
-                        onMouseEnter={(e) => (e.target.style.color = 'var(--accent-cyan)')}
-                        onMouseLeave={(e) => (e.target.style.color = 'var(--text-main)')}
-                      >
-                        {personalInfo.email}
-                      </a>
+                  <div className="overflow-hidden">
+                    <div className="text-xs text-slate-400 font-medium uppercase">Email</div>
+                    <div className="text-xs sm:text-sm font-semibold truncate text-slate-100 group-hover:text-cyan-400">
+                      {personalInfo.email}
                     </div>
                   </div>
-                </div>
+                </a>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div
-                    style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '10px',
-                      backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                      color: '#10b981',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Phone size={20} />
+                <a
+                  href={`tel:${personalInfo.phone}`}
+                  className="flex items-center gap-3.5 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-400/30 transition-all text-slate-200 no-underline group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Phone size={18} />
                   </div>
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Phone</span>
-                    <div>
-                      <a
-                        href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
-                        style={{ color: 'var(--text-main)', fontWeight: 500, textDecoration: 'none' }}
-                        onMouseEnter={(e) => (e.target.style.color = '#10b981')}
-                        onMouseLeave={(e) => (e.target.style.color = 'var(--text-main)')}
-                      >
-                        {personalInfo.phone}
-                      </a>
+                    <div className="text-xs text-slate-400 font-medium uppercase">Phone</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-100 group-hover:text-cyan-400">
+                      +91 {personalInfo.phone}
                     </div>
                   </div>
-                </div>
+                </a>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div
-                    style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '10px',
-                      backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                      color: 'var(--accent-blue)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <MapPin size={20} />
+                <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/5 border border-white/5 text-slate-200">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                    <MapPin size={18} />
                   </div>
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Location</span>
-                    <div style={{ color: 'var(--text-main)', fontWeight: 500 }}>{personalInfo.location}</div>
+                    <div className="text-xs text-slate-400 font-medium uppercase">Location</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-100">
+                      {personalInfo.location}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.75rem' }}>
-                Connect on professional platforms:
-              </span>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <a
-                  href={personalInfo.socialLinks.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline"
-                  style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
-                >
-                  <GithubIcon size={16} /> GitHub
-                </a>
-                <a
-                  href={personalInfo.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline"
-                  style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
-                >
-                  <LinkedinIcon size={16} /> LinkedIn
-                </a>
-              </div>
+            <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+              <span className="text-xs text-slate-400 font-semibold uppercase">Follow:</span>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/50 flex items-center justify-center transition-all"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon size={18} />
+              </a>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/50 flex items-center justify-center transition-all"
+                aria-label="GitHub"
+              >
+                <GithubIcon size={18} />
+              </a>
             </div>
           </div>
 
-          {/* Form */}
-          <div
-            style={{
-              padding: '2.5rem',
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '16px',
-              border: '1px solid var(--border-color)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
-            }}
-          >
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.5rem' }}>
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Rahul Sharma"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                    transition: 'border-color 0.2s'
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)')}
-                />
+          {/* Formspree Interactive Form */}
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-slate-800/60 border border-white/10 backdrop-blur-md shadow-xl flex flex-col justify-center">
+            {status === 'success' ? (
+              <div className="py-12 text-center">
+                <CheckCircle size={48} className="text-emerald-400 mx-auto mb-4 animate-bounce" />
+                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                <p className="text-slate-300 text-sm sm:text-base max-w-md mx-auto mb-6">
+                  Thank you for reaching out. I have received your message and will get back to you shortly!
+                </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="btn btn-outline py-2.5 px-6 text-sm"
+                >
+                  Send Another Message
+                </button>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <div>
+                  <label htmlFor="contact-name" className="block text-xs uppercase font-semibold text-slate-300 tracking-wider mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Enter your name"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm sm:text-base focus:outline-none focus:border-cyan-400 transition-colors"
+                  />
+                </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.5rem' }}>
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. rahul@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                    transition: 'border-color 0.2s'
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)')}
-                />
-              </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-xs uppercase font-semibold text-slate-300 tracking-wider mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="name@example.com"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm sm:text-base focus:outline-none focus:border-cyan-400 transition-colors"
+                  />
+                </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.5rem' }}>
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Tell me about your opportunity or question..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '8px',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                    resize: 'vertical',
-                    transition: 'border-color 0.2s'
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)')}
-                />
-              </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-xs uppercase font-semibold text-slate-300 tracking-wider mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell me about your project, team, or opportunity..."
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm sm:text-base focus:outline-none focus:border-cyan-400 transition-colors resize-none"
+                  ></textarea>
+                </div>
 
-              <button
-                type="submit"
-                disabled={status === 'submitting'}
-                className="btn btn-primary"
-                style={{ width: '100%', padding: '0.85rem', marginTop: '0.5rem' }}
-              >
-                {status === 'submitting' ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    <Send size={18} /> Send Message
-                  </>
+                {status === 'error' && (
+                  <div className="flex items-center gap-2 text-rose-400 text-xs sm:text-sm p-3 rounded-lg bg-rose-500/10 border border-rose-500/20">
+                    <AlertCircle size={16} className="shrink-0" />
+                    <span>Failed to send message. Please email me directly at kandekaryash33@gmail.com</span>
+                  </div>
                 )}
-              </button>
 
-              {status === 'success' && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: '#10b981',
-                    fontSize: '0.9rem',
-                    padding: '0.75rem',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    borderRadius: '8px',
-                    marginTop: '0.5rem'
-                  }}
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="btn btn-primary w-full py-3.5 text-sm sm:text-base font-semibold flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
-                  <CheckCircle size={18} /> Thank you! Your message has been sent successfully.
-                </div>
-              )}
-
-              {status === 'error' && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: '#ef4444',
-                    fontSize: '0.9rem',
-                    padding: '0.75rem',
-                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                    borderRadius: '8px',
-                    marginTop: '0.5rem'
-                  }}
-                >
-                  <AlertCircle size={18} /> Something went wrong. Please reach out via email directly.
-                </div>
-              )}
-            </form>
+                  <Send size={18} />
+                  <span>{status === 'submitting' ? 'Sending Message...' : 'Send Message'}</span>
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

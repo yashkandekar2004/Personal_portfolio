@@ -8,83 +8,47 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--border-color)',
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        padding: '3rem 0 2rem 0',
-        marginTop: '3rem',
-        position: 'relative',
-        zIndex: 10
-      }}
-    >
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <span style={{ fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.02em' }}>
+    <footer className="border-t border-white/10 bg-slate-950/95 py-10 sm:py-14 mt-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6 text-center">
+        {/* Brand Name */}
+        <div className="inline-flex items-center">
+          <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-white">
             Yash <span className="gradient-text">Kandekar</span>
           </span>
         </div>
 
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxWidth: '500px' }}>
+        <p className="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
           Architecting resilient, scalable backend solutions with modern TypeScript, Node.js, and relational databases.
         </p>
 
-        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <a href="#about" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>About</a>
-          <a href="#experience" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>Experience</a>
-          <a href="#skills" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>Skills</a>
-          <a href="#projects" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>Projects</a>
-          <a href="#resume" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>Resume</a>
-          <a href="#contact" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: '0.9rem' }}>Contact</a>
+        {/* Quick Links */}
+        <div className="flex gap-4 sm:gap-6 flex-wrap justify-center text-xs sm:text-sm">
+          {['About', 'Experience', 'Skills', 'Projects', 'Resume', 'Contact'].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="text-slate-400 hover:text-cyan-400 transition-colors no-underline font-medium"
+            >
+              {item}
+            </a>
+          ))}
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-            paddingTop: '2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-            fontSize: '0.85rem',
-            color: 'var(--text-dim)',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}
-        >
-          <div>
-            &copy; {new Date().getFullYear()} Yash Kandekar. All rights reserved.
+        {/* Bottom credits & Back to Top */}
+        <div className="w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex items-center gap-1.5">
+            Designed & Engineered by <span className="text-slate-300 font-semibold">{personalInfo.name}</span>
           </div>
+
           <button
             onClick={scrollToTop}
-            aria-label="Back to top"
-            style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid var(--border-color)',
-              color: 'var(--text-main)',
-              padding: '0.4rem 0.8rem',
-              borderRadius: '9999px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              fontSize: '0.82rem',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--accent-cyan)';
-              e.currentTarget.style.color = 'var(--accent-cyan)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-color)';
-              e.currentTarget.style.color = 'var(--text-main)';
-            }}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer bg-white/5 py-1.5 px-3 rounded-full border border-white/10"
           >
-            Back to Top <ArrowUp size={14} />
+            <span>Back to Top</span>
+            <ArrowUp size={14} />
           </button>
         </div>
       </div>
     </footer>
   );
 }
-
