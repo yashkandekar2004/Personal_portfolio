@@ -31,13 +31,7 @@ export default function Skills() {
           Hands-on backend development, relational database engineering, and modern web application stack.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem'
-          }}
-        >
+        <div className="skills-grid">
           {(technicalSkills || []).map((cat, idx) => (
             <div
               key={idx}
@@ -45,11 +39,12 @@ export default function Skills() {
               style={{
                 backgroundColor: 'var(--bg-card)',
                 borderRadius: '16px',
-                padding: '1.75rem',
+                padding: '1.5rem',
                 border: '1px solid var(--border-color)',
                 backdropFilter: 'blur(10px)',
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                boxSizing: 'border-box'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
@@ -63,10 +58,10 @@ export default function Skills() {
                 >
                   {getCategoryIcon(cat.category)}
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: '#fff' }}>{cat.category}</h3>
+                <h3 style={{ fontSize: '1.1rem', color: '#fff' }}>{cat.category}</h3>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {(cat.skills || []).map((skill, sIdx) => {
                   const skillName = typeof skill === 'string' ? skill : skill?.name;
                   if (!skillName) return null;
@@ -75,11 +70,11 @@ export default function Skills() {
                       key={sIdx}
                       className="tech-pill-interactive"
                       style={{
-                        padding: '0.45rem 0.85rem',
+                        padding: '0.4rem 0.75rem',
                         borderRadius: '8px',
                         backgroundColor: 'rgba(255, 255, 255, 0.04)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        fontSize: '0.88rem',
+                        fontSize: '0.85rem',
                         color: 'var(--text-main)',
                         fontWeight: 500,
                         display: 'flex',

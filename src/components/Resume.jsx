@@ -18,44 +18,40 @@ export default function Resume() {
         </p>
 
         <div
+          className="card-responsive"
           style={{
             maxWidth: '900px',
             margin: '0 auto',
-            backgroundColor: 'var(--bg-card)',
-            borderRadius: '20px',
-            border: '1px solid var(--border-color)',
-            padding: '3rem 2rem',
             textAlign: 'center',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
-            backdropFilter: 'blur(10px)'
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
           }}
         >
           <div
             style={{
-              width: '70px',
-              height: '70px',
+              width: '64px',
+              height: '64px',
               borderRadius: '50%',
               backgroundColor: 'rgba(6, 182, 212, 0.1)',
               border: '1px solid rgba(6, 182, 212, 0.3)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 1.5rem auto',
+              margin: '0 auto 1.25rem auto',
               color: 'var(--accent-cyan)'
             }}
           >
-            <Briefcase size={32} />
+            <Briefcase size={30} />
           </div>
 
-          <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.75rem' }}>
+          <h3 style={{ fontSize: '1.6rem', color: '#fff', marginBottom: '0.75rem' }}>
             Ready to review my complete resume?
           </h3>
           <p
             style={{
               color: 'var(--text-muted)',
               maxWidth: '600px',
-              margin: '0 auto 2rem auto',
-              fontSize: '1.02rem',
+              margin: '0 auto 1.75rem auto',
+              fontSize: '0.98rem',
               lineHeight: 1.6
             }}
           >
@@ -68,7 +64,7 @@ export default function Resume() {
               justifyContent: 'center',
               flexWrap: 'wrap',
               gap: '1rem',
-              marginBottom: '3rem'
+              marginBottom: '2.5rem'
             }}
           >
             <a
@@ -76,9 +72,9 @@ export default function Resume() {
               download
               aria-label="Download Yash Kandekar's Resume in PDF format"
               className="btn btn-primary"
-              style={{ padding: '0.85rem 2rem', fontSize: '1rem' }}
+              style={{ padding: '0.75rem 1.8rem', fontSize: '0.95rem' }}
             >
-              <FileDown size={20} /> Download PDF Resume
+              <FileDown size={18} /> Download PDF Resume
             </a>
             <a
               href={personalInfo.resumeUrl}
@@ -86,90 +82,64 @@ export default function Resume() {
               rel="noreferrer"
               aria-label="View Yash Kandekar's Resume in a new browser tab"
               className="btn btn-outline"
-              style={{ padding: '0.85rem 2rem', fontSize: '1rem' }}
+              style={{ padding: '0.75rem 1.8rem', fontSize: '0.95rem' }}
             >
-              <ExternalLink size={20} /> View Online Resume
+              <ExternalLink size={18} /> View Online Resume
             </a>
           </div>
 
           {/* Education & Certification Section */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.5rem',
-              borderTop: '1px solid var(--border-color)',
-              paddingTop: '2.5rem',
-              textAlign: 'left'
-            }}
-          >
-            {/* Education */}
+          <div className="resume-grid" style={{ textAlign: 'left' }}>
+            {/* Education Card */}
             <div
               style={{
-                padding: '1.25rem',
-                borderRadius: '12px',
+                padding: '1.35rem',
+                borderRadius: '14px',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid rgba(255, 255, 255, 0.06)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>
-                <GraduationCap size={22} />
-                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
-                  Education
-                </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
+                <div style={{ color: 'var(--accent-cyan)' }}>
+                  <GraduationCap size={22} />
+                </div>
+                <h4 style={{ fontSize: '1.1rem', color: '#fff', margin: 0, fontWeight: 700 }}>Education</h4>
               </div>
-              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
-                {edu.degree || "Bachelor of Computer Applications (BCA)"}
-              </h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
-                {edu.field || "Computer Science & Application Development"}
-              </p>
+              <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>
+                {edu.degree || 'Bachelor of Computer Applications (BCA)'}
+              </div>
+              <div style={{ fontSize: '0.88rem', color: 'var(--accent-cyan)', marginBottom: '0.4rem' }}>
+                {edu.institution || 'Savitribai Phule Pune University'}
+              </div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--text-dim)' }}>
+                {edu.duration || '2021 – 2024'}
+              </div>
             </div>
 
-            {/* Certification */}
+            {/* Certification Card */}
             <div
               style={{
-                padding: '1.25rem',
-                borderRadius: '12px',
+                padding: '1.35rem',
+                borderRadius: '14px',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid rgba(255, 255, 255, 0.06)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: '#10b981' }}>
-                <Award size={22} />
-                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
-                  Certification
-                </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
+                <div style={{ color: '#10b981' }}>
+                  <Award size={22} />
+                </div>
+                <h4 style={{ fontSize: '1.1rem', color: '#fff', margin: 0, fontWeight: 700 }}>Certification</h4>
               </div>
-              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
-                {cert.title || "React.js Certification"}
-              </h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
-                {cert.issuer || "The Baap Company"}
-              </p>
-            </div>
-
-            {/* Strengths */}
-            <div
-              style={{
-                padding: '1.25rem',
-                borderRadius: '12px',
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.06)'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', color: '#a855f7' }}>
-                <ShieldCheck size={22} />
-                <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
-                  Key Strengths
-                </span>
+              <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>
+                {cert.title || 'React Development Certification'}
               </div>
-              <h4 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>
-                Leadership & Support
-              </h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
-                REST APIs, Production Support & Mentorship
-              </p>
+              <div style={{ fontSize: '0.88rem', color: '#10b981', marginBottom: '0.4rem' }}>
+                {cert.issuer || 'Baap Infotech'}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.82rem', color: 'var(--text-dim)' }}>
+                <ShieldCheck size={14} color="#10b981" /> Verified Full Stack Credentials
+              </div>
             </div>
           </div>
         </div>

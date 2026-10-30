@@ -15,14 +15,7 @@ export default function Projects() {
           Key enterprise platforms and backend systems architected for high throughput, data integrity, and reliability.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.75rem',
-            alignItems: 'stretch'
-          }}
-        >
+        <div className="projects-grid">
           {(projects || []).map((proj) => {
             const stack = proj.techStack || proj.tech || [];
             const highlights = proj.highlights || proj.bullets || [];
@@ -34,14 +27,15 @@ export default function Projects() {
                 style={{
                   backgroundColor: 'var(--bg-card)',
                   borderRadius: '16px',
-                  padding: '2rem 1.85rem',
+                  padding: '1.75rem 1.5rem',
                   border: '1px solid var(--border-color)',
                   backdropFilter: 'blur(10px)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   height: '100%',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)'
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+                  boxSizing: 'border-box'
                 }}
               >
                 {/* Card Top Content */}
@@ -96,119 +90,122 @@ export default function Projects() {
                   {/* Project Title */}
                   <h3
                     style={{
-                      fontSize: '1.45rem',
+                      fontSize: '1.35rem',
                       color: '#ffffff',
+                      marginBottom: '0.75rem',
                       fontWeight: 700,
-                      lineHeight: 1.3,
-                      marginBottom: '0.4rem'
+                      lineHeight: 1.3
                     }}
                   >
                     {proj.title}
                   </h3>
 
-                  {/* Subtitle */}
-                  {proj.subtitle && (
-                    <div
-                      style={{
-                        fontSize: '0.82rem',
-                        color: 'var(--accent-cyan)',
-                        fontWeight: 600,
-                        marginBottom: '1rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em'
-                      }}
-                    >
-                      {proj.subtitle}
-                    </div>
-                  )}
-
                   {/* Description */}
                   <p
                     style={{
                       color: 'var(--text-muted)',
-                      fontSize: '0.94rem',
+                      fontSize: '0.92rem',
                       lineHeight: 1.6,
-                      marginBottom: '1.4rem'
+                      marginBottom: '1.25rem'
                     }}
                   >
                     {proj.description}
                   </p>
 
-                  {/* Key Highlights */}
+                  {/* Highlights */}
                   {highlights.length > 0 && (
-                    <div
-                      style={{
-                        marginBottom: '1.75rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '0.6rem'
-                      }}
-                    >
-                      {highlights.map((h, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: '0.55rem',
-                            fontSize: '0.88rem',
-                            color: 'var(--text-main)',
-                            lineHeight: 1.5
-                          }}
-                        >
-                          <CheckCircle2
-                            size={16}
-                            color="var(--accent-cyan)"
-                            style={{ marginTop: '0.2rem', flexShrink: 0 }}
-                          />
-                          <span>{h}</span>
-                        </div>
-                      ))}
+                    <div style={{ marginBottom: '1.5rem' }}>
+                      <div
+                        style={{
+                          fontSize: '0.8rem',
+                          color: 'var(--text-dim)',
+                          textTransform: 'uppercase',
+                          fontWeight: 600,
+                          marginBottom: '0.65rem',
+                          letterSpacing: '0.05em'
+                        }}
+                      >
+                        Key Architecture Highlights:
+                      </div>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {highlights.map((h, i) => (
+                          <li
+                            key={i}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '0.55rem',
+                              fontSize: '0.88rem',
+                              color: 'var(--text-main)',
+                              lineHeight: 1.5
+                            }}
+                          >
+                            <CheckCircle2 size={15} color="var(--accent-cyan)" style={{ marginTop: '0.2rem', flexShrink: 0 }} />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                 </div>
 
-                {/* Card Bottom: Tech Stack */}
-                {stack.length > 0 && (
-                  <div
-                    style={{
-                      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-                      paddingTop: '1.25rem'
-                    }}
-                  >
+                {/* Card Bottom: Tech Stack & Actions */}
+                <div>
+                  {/* Tech Stack Pills */}
+                  {stack.length > 0 && (
                     <div
                       style={{
-                        fontSize: '0.75rem',
-                        textTransform: 'uppercase',
-                        color: 'var(--text-dim)',
-                        fontWeight: 600,
-                        letterSpacing: '0.05em',
-                        marginBottom: '0.65rem'
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '0.45rem',
+                        marginBottom: '1.5rem',
+                        paddingTop: '1rem',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.05)'
                       }}
                     >
-                      Technologies Used
-                    </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                       {stack.map((tech, tIdx) => (
                         <span
                           key={tIdx}
                           className="tech-pill-interactive"
                           style={{
-                            padding: '0.3rem 0.75rem',
-                            borderRadius: '9999px',
+                            fontSize: '0.78rem',
+                            padding: '0.25rem 0.6rem',
+                            borderRadius: '6px',
                             backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.09)',
-                            fontSize: '0.82rem',
-                            color: 'var(--text-muted)',
-                            fontWeight: 500
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            color: 'var(--text-muted)'
                           }}
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                  </div>
-                )}
+                  )}
+
+                  {/* GitHub Repo Button */}
+                  {proj.github && (
+                    <div>
+                      <a
+                        href={proj.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`View GitHub repository for ${proj.title}`}
+                        className="btn btn-outline"
+                        style={{
+                          width: '100%',
+                          padding: '0.6rem 1rem',
+                          fontSize: '0.85rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '0.5rem'
+                        }}
+                      >
+                        <GithubIcon size={16} /> View on GitHub
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}

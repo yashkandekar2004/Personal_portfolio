@@ -25,16 +25,7 @@ export default function Hero() {
     >
       <div className="container">
         {/* Main 2-Column Hero Grid */}
-        <div
-          className="hero-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1.45fr) minmax(280px, 0.85fr)',
-            gap: '2.5rem',
-            alignItems: 'center',
-            marginBottom: '4rem'
-          }}
-        >
+        <div className="hero-grid">
           {/* Left Column: Text & Actions */}
           <div style={{ textAlign: 'left' }} className="hero-text-col">
             {/* Status Badge with Pulsing Ring & Shimmer */}
@@ -58,7 +49,7 @@ export default function Hero() {
                 <span className="status-ring" />
                 <span className="status-dot" />
               </div>
-              Available for Engineering Opportunities
+              Available for Opportunities
             </div>
 
             {/* Main Heading with Blur-to-Clear Entrance */}
@@ -72,10 +63,10 @@ export default function Hero() {
                 color: '#fff'
               }}
             >
-              Hi, I'm <span className="gradient-text" style={{ whiteSpace: 'nowrap' }}>{personalInfo.name}</span>
+              Hi, I'm <span className="gradient-text">{personalInfo.name}</span>
             </h1>
 
-            {/* Animated Subtitle / Role with Typewriter on ONE single line */}
+            {/* Animated Subtitle / Role with Typewriter */}
             <div
               className="hero-typewriter-row"
               style={{
@@ -83,11 +74,9 @@ export default function Hero() {
                 color: 'var(--text-muted)',
                 fontWeight: 500,
                 marginBottom: '1.25rem',
-                minHeight: '2.4rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.45rem',
-                whiteSpace: 'nowrap'
+                gap: '0.45rem'
               }}
             >
               <span style={{ flexShrink: 0 }}>I am a</span>
@@ -98,25 +87,17 @@ export default function Hero() {
             <p
               style={{
                 maxWidth: '600px',
-                fontSize: '1.05rem',
+                fontSize: '1.02rem',
                 color: 'var(--text-muted)',
                 lineHeight: 1.7,
-                marginBottom: '2.5rem'
+                marginBottom: '2.25rem'
               }}
             >
               {personalInfo.tagline} Focused on crafting clean architecture, high-throughput microservices, and reliable data pipelines.
             </p>
 
             {/* Call to Actions */}
-            <div
-              className="hero-actions-row"
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '1rem',
-                alignItems: 'center'
-              }}
-            >
+            <div className="hero-actions-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
               <a href="#projects" className="btn btn-primary">
                 Explore Projects <ArrowRight size={18} />
               </a>
@@ -139,10 +120,11 @@ export default function Hero() {
             }}
           >
             <div
+              className="hero-avatar-wrapper"
               style={{
                 position: 'relative',
-                width: 'clamp(260px, 28vw, 320px)',
-                height: 'clamp(260px, 28vw, 320px)'
+                width: 'clamp(240px, 28vw, 320px)',
+                height: 'clamp(240px, 28vw, 320px)'
               }}
             >
               {/* Rotating Gradient Aura */}
@@ -194,11 +176,11 @@ export default function Hero() {
 
               {/* Floating Status Pill */}
               <div
-                className="interactive-card shimmer-badge"
+                className="interactive-card shimmer-badge hero-floating-pill"
                 style={{
                   position: 'absolute',
                   bottom: '12px',
-                  right: '-10px',
+                  right: '0',
                   backgroundColor: 'rgba(15, 23, 42, 0.95)',
                   border: '1.5px solid rgba(6, 182, 212, 0.5)',
                   padding: '0.45rem 1rem',
@@ -220,15 +202,7 @@ export default function Hero() {
         </div>
 
         {/* Backend Highlights Bar Across Container */}
-        <div
-          style={{
-            maxWidth: '1000px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '1.25rem'
-          }}
-        >
+        <div className="hero-highlights-grid">
           <div
             className="interactive-card"
             style={{
@@ -299,28 +273,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 890px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
-          }
-          .hero-text-col {
-            text-align: center !important;
-          }
-          .hero-typewriter-row {
-            justify-content: center !important;
-          }
-          .hero-actions-row {
-            justify-content: center !important;
-          }
-          .hero-text-col p {
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -18,30 +18,13 @@ export default function Experience() {
         {(experience || []).map((exp, idx) => (
           <div
             key={idx}
-            className="interactive-card"
+            className="card-responsive interactive-card"
             style={{
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '20px',
-              border: '1px solid var(--border-color)',
-              padding: '2.5rem',
-              backdropFilter: 'blur(10px)',
-              marginBottom: '3rem',
-              boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)'
+              marginBottom: '2.5rem'
             }}
           >
             {/* Header info */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                flexWrap: 'wrap',
-                gap: '1rem',
-                borderBottom: '1px solid var(--border-color)',
-                paddingBottom: '1.5rem',
-                marginBottom: '1.75rem'
-              }}
-            >
+            <div className="experience-header-row">
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
                   <div
@@ -54,14 +37,14 @@ export default function Experience() {
                   >
                     <Briefcase size={22} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 700 }}>{exp.role}</h3>
+                  <h3 style={{ fontSize: '1.35rem', color: '#fff', fontWeight: 700 }}>{exp.role}</h3>
                 </div>
-                <div style={{ fontSize: '1.15rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                <div style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
                   {exp.company}
                 </div>
               </div>
 
-              <div style={{ textAlign: 'right' }}>
+              <div className="experience-meta-col">
                 <div
                   style={{
                     display: 'inline-flex',
@@ -71,7 +54,7 @@ export default function Experience() {
                     borderRadius: '9999px',
                     backgroundColor: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
-                    fontSize: '0.88rem',
+                    fontSize: '0.85rem',
                     color: 'var(--text-main)',
                     marginBottom: '0.4rem'
                   }}
@@ -79,8 +62,8 @@ export default function Experience() {
                   <Calendar size={14} color="var(--accent-cyan)" />
                   {exp.duration}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'var(--text-dim)' }}>
-                  <MapPin size={14} /> {exp.location}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.82rem', color: 'var(--text-dim)' }}>
+                  <MapPin size={13} /> {exp.location}
                 </div>
               </div>
             </div>
@@ -89,8 +72,8 @@ export default function Experience() {
             <div style={{ marginBottom: '1.75rem' }}>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {(exp.bullets || exp.points || []).map((bullet, bIdx) => (
-                  <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontSize: '1rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
-                    <CheckCircle2 size={18} color="var(--accent-cyan)" style={{ marginTop: '0.25rem', flexShrink: 0 }} />
+                  <li key={bIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+                    <CheckCircle2 size={18} color="var(--accent-cyan)" style={{ marginTop: '0.2rem', flexShrink: 0 }} />
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -134,15 +117,7 @@ export default function Experience() {
         ))}
 
         {/* Key Achievements Grid */}
-        <div
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            borderRadius: '20px',
-            border: '1px solid var(--border-color)',
-            padding: '2.5rem',
-            backdropFilter: 'blur(10px)'
-          }}
-        >
+        <div className="card-responsive">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div
               style={{
@@ -157,18 +132,12 @@ export default function Experience() {
             <h3 style={{ fontSize: '1.35rem', color: '#fff', fontWeight: 700 }}>Key Achievements & Strengths</h3>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.25rem'
-            }}
-          >
+          <div className="achievements-grid">
             {(keyAchievements || []).map((ach, idx) => (
               <div
                 key={idx}
                 style={{
-                  padding: '1.25rem',
+                  padding: '1.15rem',
                   borderRadius: '12px',
                   backgroundColor: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -180,7 +149,7 @@ export default function Experience() {
                 <div style={{ color: '#f59e0b', marginTop: '0.2rem', flexShrink: 0 }}>
                   <CheckCircle2 size={18} />
                 </div>
-                <p style={{ fontSize: '0.93rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
                   {typeof ach === 'string' ? ach : (ach.title || JSON.stringify(ach))}
                 </p>
               </div>

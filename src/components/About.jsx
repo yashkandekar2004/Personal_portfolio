@@ -37,75 +37,60 @@ export default function About() {
           Passionate about backend engineering, data consistency, and developer ergonomics.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '2rem',
-            alignItems: 'center'
-          }}
-        >
+        <div className="about-main-grid">
           {/* Main Narrative Card */}
-          <div
-            style={{
-              padding: '2.5rem',
-              backgroundColor: 'var(--bg-card)',
-              borderRadius: '16px',
-              border: '1px solid var(--border-color)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <h3 style={{ fontSize: '1.4rem', marginBottom: '1.25rem', color: '#fff' }}>
-              Building the invisible backbone of modern web applications.
-            </h3>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1.5rem', fontSize: '1rem' }}>
-              {personalInfo.about}
-            </p>
+          <div className="card-responsive" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '1.25rem', color: '#fff', lineHeight: 1.4 }}>
+                Building the invisible backbone of modern web applications.
+              </h3>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1.5rem', fontSize: '0.98rem' }}>
+                {personalInfo.about}
+              </p>
+            </div>
             <div
               style={{
                 display: 'flex',
                 gap: '1rem',
                 flexWrap: 'wrap',
                 paddingTop: '1rem',
-                borderTop: '1px solid var(--border-color)'
+                borderTop: '1px solid var(--border-color)',
+                alignItems: 'center',
+                justifyContent: 'space-between'
               }}
             >
               <div>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Specialization:</span>
-                <strong style={{ display: 'block', color: 'var(--accent-cyan)' }}>Backend & API Engineering</strong>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Specialization:</span>
+                <strong style={{ display: 'block', color: 'var(--accent-cyan)', fontSize: '0.95rem' }}>Backend & API Engineering</strong>
               </div>
-              <div style={{ marginLeft: 'auto' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Location:</span>
-                <strong style={{ display: 'block', color: 'var(--text-main)' }}>{personalInfo.location}</strong>
+              <div>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', fontWeight: 600 }}>Location:</span>
+                <strong style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.95rem' }}>{personalInfo.location}</strong>
               </div>
             </div>
           </div>
 
           {/* Pillars Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+          <div className="about-pillars-grid">
             {pillars.map((item, idx) => (
               <div
                 key={idx}
+                className="interactive-card"
                 style={{
-                  padding: '1.5rem',
+                  padding: '1.35rem',
                   backgroundColor: 'var(--bg-card)',
-                  borderRadius: '12px',
+                  borderRadius: '14px',
                   border: '1px solid var(--border-color)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.borderColor = 'var(--border-hover)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  boxSizing: 'border-box'
                 }}
               >
-                <div style={{ marginBottom: '0.8rem' }}>{item.icon}</div>
+                <div className="card-icon" style={{ marginBottom: '0.75rem' }}>
+                  {item.icon}
+                </div>
                 <h4 style={{ fontSize: '1.05rem', color: '#fff', marginBottom: '0.5rem' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{item.desc}</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
