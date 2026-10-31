@@ -168,12 +168,12 @@ export default function Hero() {
                     height: '100%',
                     borderRadius: '50%',
                     objectFit: 'cover',
-                    objectPosition: 'center 20%',
-                    transform: 'scale(1.05)',
-                    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    objectPosition: 'center 40%',
+                    transform: 'scale(0.98)',
+                    transition: 'transform 0.4s ease'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.12)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
                 />
               </div>
 

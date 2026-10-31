@@ -178,6 +178,11 @@ section {
   overflow-x: hidden;
 }
 
+#hero {
+  padding-top: 6.5rem !important;
+  padding-bottom: 3.5rem !important;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -572,11 +577,22 @@ input, textarea {
 }
 
 @media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+  }
+  * {
+    scrollbar-width: none !important;
+  }
   .container {
     padding: 0 1rem !important;
   }
   section {
     padding: 3rem 0 !important;
+  }
+  #hero {
+    padding-top: 5.8rem !important;
+    padding-bottom: 2rem !important;
   }
   .section-title {
     font-size: 1.85rem !important;
